@@ -1,0 +1,16 @@
+html, body {
+    color: #2699FB;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-wrapper {
+    background-color: #2699FB;
+    color: #fff;
+}
+
+.hero-container {
+    color: #fff;
+    text-align: center;
+    padding: 2% 10%;
+    display: block;
+}

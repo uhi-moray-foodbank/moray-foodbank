@@ -22,19 +22,19 @@ include("includes/header.php");
 <div class="container.fluid hero-wrapper">
     <div class="row hero-container">
         <h1>Register New Volunteer</h1>
-        <p>Step One - Volunteer's Personal Information</p>
+        <p>Step Two - Volunteer's Reference information</p>
     </div>
 </div>
 
 <div class="container">
   <ul class="progress-tracker progress-tracker--text progress-tracker--center">
-    <li class="progress-step is-active">
+    <li class="progress-step is-complete">
       <span class="progress-marker"></span>
       <span class="progress-text">
         <a href="#" class="progress-title">VOLUNTEER DETAILS</a>
       </span>
     </li>
-    <li class="progress-step">
+    <li class="progress-step is-active">
       <span class="progress-marker"></span>
       <span class="progress-text">
         <a href="#" class="progress-title">REFERENCES</a>
@@ -58,71 +58,51 @@ include("includes/header.php");
 <div class="container">
 <form class="volunteer-form">
   <div class="form-row">
-    <div class="form-group col-md-2">
-      <label for="title">TITLE</label>
-      <input type="text" class="form-control" id="title" placeholder="Title">
+    <div class="col-md-6">
+    <label>REFERENCE 1</label>
     </div>
-    <div class="form-group col-md-4">
-      <label for="firstName">FIRST NAME</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First Name">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="lname">SURNAME</label>
-      <input type="text" class="form-control" id="lname" placeholder="Surname">
+    <div class="col-md-6">
+    <label>REFERENCE 2</label>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="email">EMAIL</label>
-      <input type="text" class="form-control" id="email" placeholder="Email address">
+      <label for="refName1">FULL NAME</label>
+      <input type="text" class="form-control" id="refName1" placeholder="Full name of reference">
     </div>
     <div class="form-group col-md-6">
-      <label for="line1">ADDRESS LINE 1</label>
-      <input type="text" class="form-control" id="line1" placeholder="First line of address">
+      <label for="refName2">FULL NAME</label>
+      <input type="text" class="form-control" id="refName2" placeholder="Full name of reference">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="phoneNo">PHONE</label>
-      <input type="text" class="form-control" id="phoneNo" placeholder="Phone number">
+      <label for="refPhone1">PHONE</label>
+      <input type="text" class="form-control" id="refPhone1" placeholder="Phone Number">
     </div>
     <div class="form-group col-md-6">
-      <label for="line2">ADDRESS LINE 2</label>
-      <input type="text" class="form-control" id="line2" placeholder="Second line of address">
+      <label for="refPhone2">PHONE</label>
+      <input type="text" class="form-control" id="refPhone2" placeholder="Phone Number">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="dofb">DATE OF BIRTH</label>
-      <input type="date" class="form-control" id="dofb" placeholder="Date of birth">
+      <label for="refEmail1">EMAIL</label>
+      <input type="text" class="form-control" id="refEmail1" placeholder="Email Address">
     </div>
     <div class="form-group col-md-6">
-      <label for="address3">CITY</label>
-      <input type="text" class="form-control" id="address3" placeholder="City">
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6 offset-md-6">
-      <label for="postcode">POSTCODE</label>
-      <input type="text" class="form-control" id="postcode" placeholder="Postcode">
-    </div>
-  </div>
-  <br>
-  <label>EMERGENCY CONTACT</label>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="contactName">FULL NAME</label>
-      <input type="text" class="form-control" id="contactName" placeholder="Full name">
-    </div>
-    <div class="form-group col-md-6">
-      <label for="contactPhone">PHONE</label>
-      <input type="text" class="form-control" id="contactPhone" placeholder="Phone Number">
+      <label for="refEmail2">EMAIL</label>
+      <input type="text" class="form-control" id="refEmail2" placeholder="Email Address">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="contactRel">RELATIONSHIP</label>
-      <input type="text" class="form-control" id="contactRel" placeholder="Relationship to volunteer">
+      <label for="refRel1">RELATIONSHIP</label>
+      <input type="text" class="form-control" id="refRel1" placeholder="Relationship to volunteer">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="refRel2">RELATIONSHIP</label>
+      <input type="text" class="form-control" id="refRel2" placeholder="Relationship to volunteer">
     </div>
   </div>
   <div class="form-row">

@@ -107,7 +107,7 @@ include("includes/header.php");
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-    <button type="submit" class="btn btn-primary disabled">Back</button>
+    <button type="submit" class="btn btn-primary">Back</button>
     <button type="submit" class="btn btn-primary">Next</button>
     </div>
   </div>

@@ -124,6 +124,13 @@ include("includes/header.php");
       <label for="contactRel">RELATIONSHIP</label>
       <input type="text" class="form-control" id="contactRel" placeholder="Relationship to volunteer">
     </div>
+    <div class="form-group col-md-6">
+      <label for="contactType">CONTACT TYPE</label>
+      <select class="form-control" id="contactType">
+        <option value="0">Support</option>
+        <option value="1">Emergency</option>
+      </select>
+    </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">

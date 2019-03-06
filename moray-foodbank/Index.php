@@ -1,6 +1,6 @@
 <?php
-//Starting session, including the loginhash.php file
-include("php/ADMLoginHash.php");
+//Starting session, including the AMDLoginhash.php file to login with.
+include("PHP/ADMLoginHash.php");
 session_start();
 ?>
 <!doctype html>
@@ -13,22 +13,27 @@ session_start();
 	<meta name="description" content="">
 	<meta name="viewport" content="width=550, initial-Scale=">
 	
-	
-	</head>
+	<!-- CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/styles.css" />	
+</head>
 
 <body>
+<div class="container.fluid hero-wrapper">
+    <div class="row hero-container">
+        <h1>Login</h1>
+    </div>
+</div>
 
 <?php
-	//Checking if session matches the username session
+	//Checking if session matches the username session, redirects to home if logged in.
 	if (isset($_SESSION['Username'])){
-		//If session is a match, login page becomes a logout page
-		echo '	<form action="Logout.php" method="post">
-				<button type="submit" name="submit">Logout</button>
-				</form>';
+		header("Location: PHP/home.php");
 	}else{
 		//If session does not match username session, login page functions normally
-		//Sends the entered data to the loginhash.php file
-		echo '<form action="ADMLoginHash.php" method="post">
+		//Sends the entered data to the ADMLoginHash.php file
+		echo '<form action="" method="post">
 				<table>
 					<tr>
 						<td>Please enter your admin login details below</td>

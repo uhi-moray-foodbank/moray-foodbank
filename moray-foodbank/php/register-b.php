@@ -1,6 +1,16 @@
-<!--?php
-include("includes/header.php");
-?-->
+<?php
+//include("includes/header.php");
+
+session_start();
+
+if(!isset($_SESSION['Username'])){
+	header("Location: ../index.php");
+}
+
+if(isset($_POST['submit'])){
+	header("Location: register-c.php");
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -12,8 +22,8 @@ include("includes/header.php");
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/styles.css" />
 
 </head>
 
@@ -56,7 +66,7 @@ include("includes/header.php");
 </div>
 
 <div class="container">
-<form class="volunteer-form">
+<form class="volunteer-form" action="" method ="post">
   <div class="form-row">
     <div class="col-md-6">
     <label>REFERENCE 1</label>
@@ -108,7 +118,8 @@ include("includes/header.php");
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
     <button type="submit" class="btn btn-primary">Back</button>
-    <button type="submit" class="btn btn-primary">Next</button>
+	<!--<button type="submit" class="btn btn-primary">Next</button>-->
+	<input type="submit" name="submit" class ="btn btn-primary" value="Next">
     </div>
   </div>
 </form>

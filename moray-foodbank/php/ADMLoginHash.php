@@ -4,7 +4,7 @@ require_once( 'DB_Connector.php' );
 //Starts the session
 session_start();
 
-//$hash = '$2y$10$jkTKX2faZSPXvtsOir48JuLvIbTvJ.mmoAfYS1O/fLxZdvvP9S1ba';
+
 if ( isset( $_POST[ 'submit' ] ) ) {
 	//If there was a submit posted, set the username and password in the database to equal the username and password variables
 	$username = $_POST[ 'username' ];
@@ -20,11 +20,9 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 		$testing = $rows['id'];
 		$_SESSION['Username'] = $test ;
 		$_SESSION['ID'] = $testing;
-		header("Location: Home.php");
+		header("Location: home.php");
 	}else{
 		echo "Invalid entry";
-		echo $row;
-		echo $rows;
 	}
 }
 ?>

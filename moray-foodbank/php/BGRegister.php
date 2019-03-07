@@ -29,7 +29,7 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 		echo $result;
 		if ( $result ) {
 			echo "Account Created";
-			header( "Location:" . "Index.php" );
+			header("Location: ../index.php" );
 		} else {
 			// INSERT failed
 			echo "Account Creation Failed";

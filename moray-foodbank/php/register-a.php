@@ -1,6 +1,33 @@
-<!--?php
-include("includes/header.php");
-?-->
+<?php
+//include("includes/header.php");
+
+session_start();
+
+if(!isset($_SESSION['Username'])){
+	header("Location: ../index.php");
+}
+
+if(isset($_POST['submit'])){
+	$_SESSION['title'] = $_POST['title'];
+	$_SESSION['fname'] = $_POST['firstname'];
+	$_SESSION['lname'] = $_POST['lname'];
+	$_SESSION['email'] = $_POST['email'];
+	$_SESSION['line1'] = $_POST['line1'];
+	$_SESSION['line2'] = $_POST['line2'];
+	$_SESSION['city'] = $_POST['address3'];
+	$_SESSION['postcode'] = $_POST['postcode'];
+	$_SESSION['phone'] = $_POST['phoneNo'];
+	$_SESSION['dofb'] = $_POST['dofb'];
+	
+	$_SESSION['cType'] = $_POST['contactType'];
+	$_SESSION['cName'] = $_POST['contactName'];
+	$_SESSION['cphone'] = $_POST['contactPhone'];
+	$_SESSION['relationship'] = $_POST['contactRel'];
+
+	
+	header("Location: register-b.php");
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -12,8 +39,8 @@ include("includes/header.php");
 
     <!-- CSS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/styles.css" />
 
 </head>
 
@@ -56,7 +83,7 @@ include("includes/header.php");
 </div>
 
 <div class="container">
-<form class="volunteer-form">
+<form class="volunteer-form" action="" method="post">
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="title">TITLE</label>
@@ -127,15 +154,16 @@ include("includes/header.php");
     <div class="form-group col-md-6">
       <label for="contactType">CONTACT TYPE</label>
       <select class="form-control" id="contactType">
-        <option value="0">Support</option>
+		<option value="0">Support</option>
         <option value="1">Emergency</option>
       </select>
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-    <button type="submit" class="btn btn-primary disabled">Back</button>
-    <button type="submit" class="btn btn-primary">Next</button>
+		<button type="submit" class="btn btn-primary disabled">Back</button>
+		<!--<button type="submit" class="btn btn-primary">Next</button>-->
+		<input type ="submit" name="submit" class ="btn btn-primary" value="Next">
     </div>
   </div>
 </form>

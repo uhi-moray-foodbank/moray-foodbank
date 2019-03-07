@@ -27,13 +27,12 @@ if(!isset($_SESSION['Username'])){
 <div class="container.fluid hero-wrapper">
     <div class="row hero-container">
         <h1>Home</h1>
-		<p><a href="logout.php">Logout</a></p>
-
     </div>
 </div>
 
 <p><a href="register-a.php">Begin Registration Here</a></p>
 <p><a href="testall.php">View all volunteers</a></p>
+<p><a href="logout.php">Logout</a></p>
 		
 </body>
 </html>

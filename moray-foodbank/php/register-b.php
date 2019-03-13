@@ -9,6 +9,12 @@ if(!isset($_SESSION['Username'])){
 
 if(isset($_POST['submit'])){
 	header("Location: register-c.php");
+	
+	
+}
+
+if(isset($_POST['back'])){
+	header("Location: register-a.php");
 }
 ?>
 
@@ -117,7 +123,8 @@ if(isset($_POST['submit'])){
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-    <button type="submit" class="btn btn-primary">Back</button>
+    <!--<button type="submit" class="btn btn-primary">Back</button>-->
+	<input type="submit" name="back" class ="btn btn-primary" value="Back">
 	<!--<button type="submit" class="btn btn-primary">Next</button>-->
 	<input type="submit" name="submit" class ="btn btn-primary" value="Next">
     </div>

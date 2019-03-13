@@ -6,6 +6,28 @@ session_start();
 if(!isset($_SESSION['Username'])){
 	header("Location: ../index.php");
 }
+
+if(isset($_SESSION['submit'])){
+		$_SESSION['lowIncome'] = $_POST['lowIncome'];
+		$_SESSION['mentalHealth'] = $_POST['mentalHealth'];
+		$_SESSION['disabilityPhysical'] = $_POST['disabilityPhysical'];
+		$_SESSION['disabilityLearning'] = $_POST['disabilityLearning'];
+		$_SESSION['chronicCondition'] = $_POST['chronicCondition'];
+		$_SESSION['carers'] = $_POST['carers'];
+		$_SESSION['abused'] = $_POST['abused'];
+		$_SESSION['lgbti'] = $_POST['lgbti'];
+		$_SESSION['offenders'] = $_POST['offenders'];
+		$_SESSION['youngRisk'] = $_POST['youngRisk'];
+		$_SESSION['homeless'] = $_POST['homeless'];
+		$_SESSION['addiction'] = $_POST['addiction'];
+		$_SESSION['singleParent'] = $_POST['singleParent'];
+		$_SESSION['ethnicMinority'] = $_POST['ethnicMinority'];	
+}
+
+if(isset($_POST['back'])){
+	header("Location: register-c.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -70,19 +92,19 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="lowIncome">
+      <input class="form-check-input" type="checkbox" value="1" name="lowIncome" id="lowIncome">
       <label class="form-check-label" for="lowIncome">
         Low Income
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="mentalHealth">
+      <input class="form-check-input" type="checkbox" value="1" name="mentalHealth" id="mentalHealth">
       <label class="form-check-label" for="mentalHealth">
         Mental Health?
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="disabilityPhysical">
+      <input class="form-check-input" type="checkbox" value="1" name="disabilityPhysical" id="disabilityPhysical">
       <label class="form-check-label" for="disabilityPhysical">
         Physical Disability
       </label>
@@ -90,19 +112,19 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="disabilityLearning">
+      <input class="form-check-input" type="checkbox" value="1" name="dysabilityLearning" id="disabilityLearning">
       <label class="form-check-label" for="disabilityLearning">
         Learning Disability
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="chronicCondition">
+      <input class="form-check-input" type="checkbox" value="1" name="chronicCondition" id="chronicCondition">
       <label class="form-check-label" for="chronicCondition">
         Chronic condition
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="carers">
+      <input class="form-check-input" type="checkbox" value="1" name="carers" id="carers">
       <label class="form-check-label" for="carers">
         Carers
       </label>
@@ -110,19 +132,19 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="abused">
+      <input class="form-check-input" type="checkbox" value="1" name="abused" id="abused">
       <label class="form-check-label" for="abused">
         Abused
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="lgbti">
+      <input class="form-check-input" type="checkbox" value="1" name="lgbti" id="lgbti">
       <label class="form-check-label" for="lgbti">
         LGBTI
       </label>
     </div>
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="offenders">
+    <div class="form-check form-group col-md-4"> 
+      <input class="form-check-input" type="checkbox" value="1" name="offenders" id="offenders">
       <label class="form-check-label" for="offenders">
         Offenders
       </label>
@@ -130,19 +152,19 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="youngRisk">
+      <input class="form-check-input" type="checkbox" value="1" name="youngRisk" id="youngRisk">
       <label class="form-check-label" for="youngRisk">
         Young Risk?
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="homeless">
+      <input class="form-check-input" type="checkbox" value="1" name="homeless" id="homeless">
       <label class="form-check-label" for="homeless">
         Homeless
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="addiction">
+      <input class="form-check-input" type="checkbox" value="1" name="addiction" id="addiction">
       <label class="form-check-label" for="addiction">
         Addiction
       </label>
@@ -150,13 +172,13 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="singleParent">
+      <input class="form-check-input" type="checkbox" value="1" name="singleParent" id="singleParent">
       <label class="form-check-label" for="singleParent">
         Single Parent
       </label>
     </div>
     <div class="form-check form-group col-md-8">
-      <input class="form-check-input" type="checkbox" value="" id="ethnicMinority">
+      <input class="form-check-input" type="checkbox" value="1" name="ethnicMinority" id="ethnicMinority">
       <label class="form-check-label" for="ethnicMinority">
         Ethnic Minority... pretty sure this shouldn't be a checkbox...
       </label>
@@ -164,7 +186,8 @@ if(!isset($_SESSION['Username'])){
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-    <button type="submit" class="btn btn-primary">Back</button>
+    <!--<button type="submit" class="btn btn-primary">Back</button>-->
+	<input type="submit" name="back" class ="btn btn-primary" value="Back">
 	<!--<button type="submit" class="btn btn-primary">Next</button>-->
 	<input type="submit" name="submit" class ="btn btn-primary" value="Finish">
     </div>

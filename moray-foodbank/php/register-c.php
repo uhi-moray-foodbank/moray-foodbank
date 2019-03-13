@@ -8,7 +8,39 @@ if(!isset($_SESSION['Username'])){
 }
 
 if(isset($_POST['submit'])){
+	
+	$_SESSION['foodbankCentre'] = $_POST['foodbankCentre'];
+	$_SESSION['promoEvents'] = $_POST['promoEvents'];
+	$_SESSION['collections'] = $_POST['collections'];
+	$_SESSION['fundraising'] = $_POST['fundraising'];
+	$_SESSION['buddy'] = $_POST['buddyScheme'];
+	$_SESSION['delivery'] = $_POST['delivery'];
+	$_SESSION['drivers'];
+	$_SESSION['cooking'];
+	$_SESSION['store'];
+	$_SESSION['adhoc'];
+	$_SESSION['external'];
+	
+	
+	$_SESSION['mon'] = $_POST['mon'];
+	$_SESSION['tue'] = $_POST['tue'];
+	$_SESSION['wed'] = $_POST['wed'];
+	$_SESSION['thu'] = $_POST['thu'];
+	$_SESSION['fri'] = $_POST['fri'];
+	
+	$_SESSION['notes'] = $_POST['otherNotes'];
+	
 	header("Location: register-d.php");
+}
+
+if(isset($_POST['back'])){
+	header("Location: register-b.php");	
+	
+	$_SESSION['mon'] = $_POST['mon'];
+	$_SESSION['tue'] = $_POST['tue'];
+	$_SESSION['wed'] = $_POST['wed'];
+	$_SESSION['thu'] = $_POST['thu'];
+	$_SESSION['fri'] = $_POST['fri'];
 }
 ?>
 <!DOCTYPE html>
@@ -73,19 +105,19 @@ if(isset($_POST['submit'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="foodbankCentre">
+      <input class="form-check-input" type="checkbox" value="1" name="foodbankCentre" id="foodbankCentre" >
       <label class="form-check-label" for="foodbankCentre">
         Foodbank Centre
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="promoEvents">
+      <input class="form-check-input" type="checkbox" value="1" name="promoEvents" id="promoEvents">
       <label class="form-check-label" for="promoEvents">
         Promotional Events
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="collections">
+      <input class="form-check-input" type="checkbox" value="1" name="collections" id="collections">
       <label class="form-check-label" for="collections">
         Supermarket Collections
       </label>
@@ -93,19 +125,19 @@ if(isset($_POST['submit'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="fundraising">
+      <input class="form-check-input" type="checkbox" value="1" name="fundraising" id="fundraising">
       <label class="form-check-label" for="fundraising">
         Fundraising
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="buddyScheme">
+      <input class="form-check-input" type="checkbox" value="1" name="buddyScheme" id="buddyScheme">
       <label class="form-check-label" for="buddyScheme">
         Buddy Scheme
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="" id="delivery">
+      <input class="form-check-input" type="checkbox" value="1" name="delivery" id="delivery">
       <label class="form-check-label" for="delivery">
         Delivery or Collections (own car)
       </label>
@@ -125,43 +157,43 @@ if(isset($_POST['submit'])){
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="mon">
+      <input class="form-check-input" type="checkbox" value="1" name="mon" id="mon" <?php if(isset($_SESSION['mon'])){echo "checked";} ?>>
       <label class="form-check-label" for="mon">
         Mon
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="tue">
+      <input class="form-check-input" type="checkbox" value="1" name="tue" id="tue">
       <label class="form-check-label" for="tue">
         Tues
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="wed">
+      <input class="form-check-input" type="checkbox" value="1" name="wed" id="wed">
       <label class="form-check-label" for="wed">
         Wed
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="thu">
+      <input class="form-check-input" type="checkbox" value="1" name="thu" id="thu">
       <label class="form-check-label" for="thu">
         Thurs
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="fri">
+      <input class="form-check-input" type="checkbox" value="1" name="fri"  id="fri">
       <label class="form-check-label" for="fri">
         Fri
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="sat">
+      <input class="form-check-input" type="checkbox" value="1" id="sat">
       <label class="form-check-label" for="sat">
         Sat
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="" id="sun">
+      <input class="form-check-input" type="checkbox" value="1" id="sun">
       <label class="form-check-label" for="sun">
         Sun
       </label>
@@ -170,13 +202,14 @@ if(isset($_POST['submit'])){
   <div class="form-row">
     <div class="form-group col-md-12">
     <label for="otherNotes">Other notes:</label>
-    <textarea class="form-control" id="otherNotes" rows="3" ></textarea>
+    <textarea class="form-control" name="otherNotes" id="otherNotes" rows="3" value=""></textarea>
     </div>
   </div>
   <br>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-    <button type="submit" class="btn btn-primary">Back</button>
+    <!--<button type="submit" class="btn btn-primary">Back</button>-->
+	<input type="submit" name="back" class ="btn btn-primary" value="Back">
     <!--<button type="submit" class="btn btn-primary">Next</button>-->
 	<input type="submit" name="submit" class ="btn btn-primary" value="Next">
     </div>

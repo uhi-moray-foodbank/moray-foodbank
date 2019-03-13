@@ -1,12 +1,9 @@
 <?php
-session_start();
+$title = "Search Database";
+include("header.php");
 
 //Connects to database
 require_once("DB_Connector.php");
-
-if(!isset($_SESSION['Username'])){
-	header("Location: ../index.php");
-}
 
 //The basic query for if no inputs are given to the search bar or checkboxes
 $sql = "SELECT v.id, CONCAT(lname,', ',fname) AS 'fullname', mon, tue, wed, thu, fri, saltire FROM volunteer v, days d
@@ -54,31 +51,15 @@ $sql .= ";";
 $query = mysqli_query($connection, $sql);
 
 ?>
-<!doctype html>
-<html>
 
-<head>
-	<meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Moray Foodbank</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="../CSS/styles.css" />
-	
-</head>
-
-<body>
+<main class="container.fluid">
 <div class="container.fluid hero-wrapper">
     <div class="row hero-container">
         <h1>Testing</h1>
-		<p><a href="logout.php">Logout</a></p>
     </div>
 </div>
 
-
+<div class="container">
 <!--The search inputs to specifiy the volunteers the user is looking for-->
 <form method="post" class="volunteer-form">
 	Surname: <input type = "text" name="surname">
@@ -93,6 +74,7 @@ $query = mysqli_query($connection, $sql);
 	<input type = "checkbox" name = "archived" value = "archived">Include archived?
 
 </form>
+</div>
 
 <table align="center" border="1">
     <tr>
@@ -162,8 +144,6 @@ $query = mysqli_query($connection, $sql);
 	?>
        
 </table>	
-
-
-
+</main>
 </body>
 </html>

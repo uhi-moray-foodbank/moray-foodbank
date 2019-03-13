@@ -32,10 +32,12 @@ if(!isset($_SESSION['Username'])){
     <div class="container.fluid header-wrapper">
         <div class="container header">
             <div class="row">
+                <!-- BURGER MENU -->
                 <div class="col-4 header-menu">
                     <nav id="headerNav" class="header-nav">
                         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                         <ul class="header-list">
+                            <li><a href="home.php">HOME</a></li>
                             <li><a href="register-a.php">NEW VOLUNTEER</a></li>
                             <li><a href="testall.php">VIEW ALL VOLUNTEERS</a></li>
                             <li><a href="logout.php">LOGOUT</a></li>
@@ -48,11 +50,12 @@ if(!isset($_SESSION['Username'])){
                     </span>
                 </div>
 
-
+                <!-- LOGO -->
                 <div class="col-4 header-logo">
-                    <a href="#"><img class="img-fluid" src="#" alt="Moray Foodbank logo"></a>
+                    <a href="home.php"><img class="img-fluid" src="../IMAGES/moray-foodbank-logo.png" alt="Moray Foodbank logo"></a>
                 </div>
 
+                <!-- USER MENU -->
                 <div class="col-4 header-account">
                     <div class="dropdown" id="headerAccountMenu">
                         <button class="btn btn-login-menu dropdown-toggle" type="button" id="dropdownAccountMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

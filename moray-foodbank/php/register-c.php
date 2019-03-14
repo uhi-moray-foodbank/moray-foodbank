@@ -163,25 +163,25 @@ if(isset($_POST['back'])){
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="1" name="tue" id="tue">
+      <input class="form-check-input" type="checkbox" value="1" name="tue" id="tue" <?php if(isset($_SESSION['tue'])){echo "checked";} ?>>
       <label class="form-check-label" for="tue">
         Tues
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="1" name="wed" id="wed">
+      <input class="form-check-input" type="checkbox" value="1" name="wed" id="wed" <?php if(isset($_SESSION['wed'])){echo "checked";} ?>>
       <label class="form-check-label" for="wed">
         Wed
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="1" name="thu" id="thu">
+      <input class="form-check-input" type="checkbox" value="1" name="thu" id="thu" <?php if(isset($_SESSION['thu'])){echo "checked";} ?>>
       <label class="form-check-label" for="thu">
         Thurs
       </label>
     </div>
     <div class="form-check form-group col-md-1">
-      <input class="form-check-input" type="checkbox" value="1" name="fri"  id="fri">
+      <input class="form-check-input" type="checkbox" value="1" name="fri"  id="fri" <?php if(isset($_SESSION['fri'])){echo "checked";} ?>>
       <label class="form-check-label" for="fri">
         Fri
       </label>

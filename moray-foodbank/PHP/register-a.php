@@ -71,51 +71,51 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="title">TITLE</label>
-      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php echo $_SESSION['title']; ?>">
+      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>">
     </div>
     <div class="form-group col-md-4">
       <label for="firstName">FIRST NAME</label>
-      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php echo $_SESSION['fname']; ?>">
+      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="lname">SURNAME</label>
-      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php echo $_SESSION['lname']; ?>">
+      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">EMAIL</label>
-      <input type="text" class="form-control" name="email" id="email" placeholder="Email address" value="<?php echo $_SESSION['email']; ?>">
+      <input type="text" class="form-control" name="email" id="email" placeholder="Email address" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="line1">ADDRESS LINE 1</label>
-      <input type="text" class="form-control" name="line1" id="line1" placeholder="First line of address" value="<?php echo $_SESSION['line1']; ?>">
+      <input type="text" class="form-control" name="line1" id="line1" placeholder="First line of address" value="<?php if(isset($_SESSION['line1'])){echo $_SESSION['line1'];} ?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="phoneNo">PHONE</label>
-      <input type="text" class="form-control" name="phoneNo" id="phoneNo" placeholder="Phone number" value="<?php echo $_SESSION['phone']; ?>">
+      <input type="text" class="form-control" name="phoneNo" id="phoneNo" placeholder="Phone number" value="<?php if(isset($_SESSION['phone'])){echo $_SESSION['phone'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="line2">ADDRESS LINE 2</label>
-      <input type="text" class="form-control" name="line2" id="line2" placeholder="Second line of address" value="<?php echo $_SESSION['line2']; ?>">
+      <input type="text" class="form-control" name="line2" id="line2" placeholder="Second line of address" value="<?php if(isset($_SESSION['line2'])){echo $_SESSION['line2'];} ?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="dofb">DATE OF BIRTH</label>
-      <input type="date" class="form-control" name="dofb" id="dofb" placeholder="Date of birth" value="<?php echo $_SESSION['dofb']; ?>">
+      <input type="date" class="form-control" name="dofb" id="dofb" placeholder="Date of birth" value="<?php if(isset($_SESSION['dofb'])){echo $_SESSION['dofb'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="address3">CITY</label>
-      <input type="text" class="form-control" name="address3" id="address3" placeholder="City" value="<?php echo $_SESSION['city']; ?>">
+      <input type="text" class="form-control" name="address3" id="address3" placeholder="City" value="<?php if(isset($_SESSION['city'])){echo $_SESSION['city'];} ?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-6">
       <label for="postcode">POSTCODE</label>
-      <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" value="<?php echo $_SESSION['postcode']; ?>">
+      <input type="text" class="form-control" name="postcode" id="postcode" placeholder="Postcode" value="<?php if(isset($_SESSION['postcode'])){echo $_SESSION['postcode'];} ?>">
     </div>
   </div>
   <br>
@@ -123,23 +123,23 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="contactName">FULL NAME</label>
-      <input type="text" class="form-control" name="contactName" id="contactName" placeholder="Full name" value="<?php echo $_SESSION['cName']; ?>">
+      <input type="text" class="form-control" name="contactName" id="contactName" placeholder="Full name" value="<?php if(isset($_SESSION['cName'])){echo $_SESSION['cName'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="contactPhone">PHONE</label>
-      <input type="text" class="form-control" name="contactPhone" id="contactPhone" placeholder="Phone Number" value="<?php echo $_SESSION['cPhone']; ?>">
+      <input type="text" class="form-control" name="contactPhone" id="contactPhone" placeholder="Phone Number" value="<?php if(isset($_SESSION['cPhone'])){echo $_SESSION['cPhone'];} ?>">
     </div>
   </div>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="contactRel">RELATIONSHIP</label>
-      <input type="text" class="form-control" name="contactRel" id="contactRel" placeholder="Relationship to volunteer" value="<?php echo $_SESSION['relationship']; ?>">
+      <input type="text" class="form-control" name="contactRel" id="contactRel" placeholder="Relationship to volunteer" value="<?php if(isset($_SESSION['relationship'])){echo $_SESSION['relationship'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="contactType">CONTACT TYPE</label>
       <select class="form-control" id="contactType" name="contactType">
 		<option value="0">Support</option>
-        <option value="1" <?php if($_SESSION['cType']=="Emergency"){echo "selected";}?>>Emergency</option>
+        <option value="1" <?php if((isset($_SESSION['cType'])) && $_SESSION['cType']=="1"){echo "selected";}?>>Emergency</option>
       </select>
     </div>
   </div>

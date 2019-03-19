@@ -12,7 +12,7 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 	echo $username . "<br />";
 	echo $password;
 
-	$query = mysqli_query( $connection, "SELECT * FROM admin WHERE username = '$username'" ); 
+	$query = mysqli_query( $connection, "SELECT * FROM admin_ WHERE username = '$username'" ); 
 	$rows = mysqli_fetch_assoc($query);
 	$row = mysqli_num_rows($query);
 	if(password_verify($password, $rows['pass']) && $row == 1){

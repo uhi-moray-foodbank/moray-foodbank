@@ -53,16 +53,20 @@ include("header.php");
     <!-- TODO: Confirm this row - on paper there is the option of checking box 1 or 2-->
     <div class="form-row">
         <div class="form-check form-group col-md-4">
-            <input class="form-check-input" type="checkbox" value="" id="refRequest">
-            <label class="form-check-label" for="refRequest">
-                References requested
-            </label>
+            <label for="refRequest">References requested</label>
+            <select class="form-control" id="refRequest" name="refRequest">
+                <option value="0">0</option>
+                <option value="1" <?php if((isset($_SESSION['refRequest'])) && $_SESSION['refRequest']=="1"){echo "selected";}?>>1</option>
+                <option value="2" <?php if((isset($_SESSION['refRequest'])) && $_SESSION['refRequest']=="2"){echo "selected";}?>>2</option>
+            </select>
         </div>
         <div class="form-check form-group col-md-4">
-            <input class="form-check-input" type="checkbox" value="" id="refReceived"> <!--TODO: fix spelling in database-->
-            <label class="form-check-label" for="refReceived">
-                References received
-            </label>
+        <label for="refReceived">References received</label>
+            <select class="form-control" id="refReceived" name="refReceived">
+                <option value="0">0</option>
+                <option value="1" <?php if((isset($_SESSION['refRequest'])) && $_SESSION['refReceived']=="1"){echo "selected";}?>>1</option>
+                <option value="2" <?php if((isset($_SESSION['refRequest'])) && $_SESSION['refReceived']=="2"){echo "selected";}?>>2</option>
+            </select>
         </div>
     </div>
     <div class="form-row">

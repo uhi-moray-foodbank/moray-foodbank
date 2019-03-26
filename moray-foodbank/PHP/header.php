@@ -39,8 +39,8 @@ if(!isset($_SESSION['Username'])){
                         <ul class="header-list">
                             <li><a href="home.php">HOME</a></li>
                             <li><a href="register-a.php">NEW VOLUNTEER</a></li>
-                            <li><a href="testall.php">VIEW ALL VOLUNTEERS</a></li>
-                            <li><a href="logout.php">LOGOUT</a></li>
+                            <li><a href="testall.php">SEARCH DATABASE</a></li>
+                            <li><a href="#">REPORTS</a></li>
                         </ul>
                     </nav>
 

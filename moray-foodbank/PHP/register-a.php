@@ -2,25 +2,32 @@
 $title = "Registration - Step One";
 include("header.php");
 
-if(isset($_POST['submit'])){
-  $_SESSION['title'] = $_POST['title'];
-  $_SESSION['fname'] = $_POST['firstname'];
-  $_SESSION['lname'] = $_POST['lname'];
-  $_SESSION['email'] = $_POST['email'];
-  $_SESSION['line1'] = $_POST['line1'];
-  $_SESSION['line2'] = $_POST['line2'];
-  $_SESSION['city'] = $_POST['address3'];
-  $_SESSION['postcode'] = $_POST['postcode'];
-  $_SESSION['phone'] = $_POST['phoneNo'];
-  $_SESSION['dofb'] = $_POST['dofb'];
-  
-  $_SESSION['cType'] = $_POST['contactType'];
-  $_SESSION['cName'] = $_POST['contactName'];
-  $_SESSION['cPhone'] = $_POST['contactPhone'];
-  $_SESSION['relationship'] = $_POST['contactRel'];
-  
+$error = "";
 
-  header("Location: register-b.php");
+if(isset($_POST['submit'])){
+	if(isset($_POST['title']) && isset($_POST['firstname']) && isset($_POST['lname'])){
+		$_SESSION['title'] = $_POST['title'];
+		$_SESSION['fname'] = $_POST['firstname'];
+		$_SESSION['lname'] = $_POST['lname'];
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['line1'] = $_POST['line1'];
+		$_SESSION['line2'] = $_POST['line2'];
+		$_SESSION['city'] = $_POST['address3'];
+		$_SESSION['postcode'] = $_POST['postcode'];
+		$_SESSION['phone'] = $_POST['phoneNo'];
+		$_SESSION['dofb'] = $_POST['dofb'];
+		
+		$_SESSION['cType'] = $_POST['contactType'];
+		$_SESSION['cName'] = $_POST['contactName'];
+		$_SESSION['cPhone'] = $_POST['contactPhone'];
+		$_SESSION['relationship'] = $_POST['contactRel'];
+		
+		header("Location: register-b.php");
+	}else{
+		$error = "Error! Need to fill in title, firstname, and lastname fields before moving fowards";
+		
+	}
+
 }
 
 if(isset($_POST['cancel'])){
@@ -149,6 +156,7 @@ if(isset($_POST['cancel'])){
 		<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">
 		<!--<button type="submit" class="btn btn-primary">Next</button>-->
 		<input type ="submit" name="submit" class ="btn btn-primary" value="Next">
+		<?php echo $error; ?>
     </div>
   </div>
 </form>

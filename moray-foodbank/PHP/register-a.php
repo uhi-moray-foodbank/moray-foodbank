@@ -2,32 +2,43 @@
 $title = "Registration - Step One";
 include("header.php");
 
-$error = "";
+$errorTitle = false;
+$errorFName = false;
+$errorLName = false;
 
 if(isset($_POST['submit'])){
-	if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])){
-		$_SESSION['title'] = $_POST['title'];
-		$_SESSION['fname'] = $_POST['firstname'];
-		$_SESSION['lname'] = $_POST['lname'];
-		$_SESSION['email'] = $_POST['email'];
-		$_SESSION['line1'] = $_POST['line1'];
-		$_SESSION['line2'] = $_POST['line2'];
-		$_SESSION['city'] = $_POST['address3'];
-		$_SESSION['postcode'] = $_POST['postcode'];
-		$_SESSION['phone'] = $_POST['phoneNo'];
-		$_SESSION['dofb'] = $_POST['dofb'];
-		
-		$_SESSION['cType'] = $_POST['contactType'];
-		$_SESSION['cName'] = $_POST['contactName'];
-		$_SESSION['cPhone'] = $_POST['contactPhone'];
-		$_SESSION['relationship'] = $_POST['contactRel'];
-		
+  if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname']))
+  {	
 		header("Location: register-b.php");
 	}else{
-		$error = "Error! Need to fill in title, firstname, and lastname fields before moving fowards";
-		
-	}
-
+    if(empty($_POST['title']))
+    {
+      $errorTitle = true;
+    }
+    if(empty($_POST['firstname']))
+    {
+      $errorFName = true;
+    }
+    if(empty($_POST['lname']))
+    {
+      $errorLName = true;
+    }
+  }
+  $_SESSION['title'] = $_POST['title'];
+  $_SESSION['fname'] = $_POST['firstname'];
+  $_SESSION['lname'] = $_POST['lname'];
+  $_SESSION['email'] = $_POST['email'];
+  $_SESSION['line1'] = $_POST['line1'];
+  $_SESSION['line2'] = $_POST['line2'];
+  $_SESSION['city'] = $_POST['address3'];
+  $_SESSION['postcode'] = $_POST['postcode'];
+  $_SESSION['phone'] = $_POST['phoneNo'];
+  $_SESSION['dofb'] = $_POST['dofb'];
+  
+  $_SESSION['cType'] = $_POST['contactType'];
+  $_SESSION['cName'] = $_POST['contactName'];
+  $_SESSION['cPhone'] = $_POST['contactPhone'];
+  $_SESSION['relationship'] = $_POST['contactRel'];
 }
 
 if(isset($_POST['cancel'])){
@@ -78,15 +89,24 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="title">TITLE*</label>
-      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>">
+      <input type="text" class="form-control  <?php if($errorTitle){echo 'is-invalid';}?>" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>">
+      <div class="invalid-feedback">
+          Title required.
+      </div>
     </div>
     <div class="form-group col-md-4">
       <label for="firstName">FIRST NAME*</label>
-      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>">
+      <input type="text" class="form-control <?php if($errorFName){echo 'is-invalid';}?>" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>">
+      <div class="invalid-feedback">
+          First name required.
+      </div>
     </div>
     <div class="form-group col-md-6">
       <label for="lname">SURNAME*</label>
-      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>">
+      <input type="text" class="form-control <?php if($errorLName){echo 'is-invalid';}?>" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>">
+      <div class="invalid-feedback">
+          Last name required.
+      </div>
     </div>
   </div>
   <div class="form-row">
@@ -152,11 +172,8 @@ if(isset($_POST['cancel'])){
   </div>
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-		<!--<button type="submit" class="btn btn-primary disabled">Back</button>-->
-		<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">
-		<!--<button type="submit" class="btn btn-primary">Next</button>-->
-		<input type ="submit" name="submit" class ="btn btn-primary" value="Next">
-		<?php echo $error; ?>
+      <input type ="submit" name="cancel" class ="btn btn-primary" value="Cancel">
+      <input type ="submit" name="submit" class ="btn btn-primary" value="Next">
     </div>
   </div>
 </form>

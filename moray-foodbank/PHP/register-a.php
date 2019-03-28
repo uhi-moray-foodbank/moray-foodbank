@@ -5,7 +5,7 @@ include("header.php");
 $error = "";
 
 if(isset($_POST['submit'])){
-	if(empty($_POST['title']) && empty($_POST['firstname']) && empty($_POST['lname'])){
+	if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])){
 		$_SESSION['title'] = $_POST['title'];
 		$_SESSION['fname'] = $_POST['firstname'];
 		$_SESSION['lname'] = $_POST['lname'];

@@ -22,6 +22,8 @@ if(isset($_POST['submit'])){
 	$_SESSION['wed'] = $_POST['wed'];
 	$_SESSION['thu'] = $_POST['thu'];
 	$_SESSION['fri'] = $_POST['fri'];
+	$_SESSION['sat'] = $_POST['sat'];
+	$_SESSION['sun'] = $_POST['sun'];
 	
 	$_SESSION['notes'] = $_POST['otherNotes'];
 	
@@ -29,13 +31,22 @@ if(isset($_POST['submit'])){
 }
 
 if(isset($_POST['back'])){
-	header("Location: register-b.php");	
+	$_SESSION['foodbankCentre'] = $_POST['foodbankCentre'];
+	$_SESSION['promoEvents'] = $_POST['promoEvents'];
+	$_SESSION['collections'] = $_POST['collections'];
+	$_SESSION['fundraising'] = $_POST['fundraising'];
+	$_SESSION['buddy'] = $_POST['buddyScheme'];
+	$_SESSION['delivery'] = $_POST['delivery'];
 	
 	$_SESSION['mon'] = $_POST['mon'];
 	$_SESSION['tue'] = $_POST['tue'];
 	$_SESSION['wed'] = $_POST['wed'];
 	$_SESSION['thu'] = $_POST['thu'];
 	$_SESSION['fri'] = $_POST['fri'];
+	
+	$_SESSION['notes'] = $_POST['otherNotes'];
+	
+	header("Location: register-b.php");	
 }
 ?>
 
@@ -85,19 +96,19 @@ if(isset($_POST['back'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="foodbankCentre" id="foodbankCentre" >
+      <input class="form-check-input" type="checkbox" value="1" name="foodbankCentre" id="foodbankCentre" <?php if(isset($_SESSION['foodbankCentre'])){echo "checked";} ?>>
       <label class="form-check-label" for="foodbankCentre">
         Foodbank Centre
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="promoEvents" id="promoEvents">
+      <input class="form-check-input" type="checkbox" value="1" name="promoEvents" id="promoEvents" <?php if(isset($_SESSION['promoEvents'])){echo "checked";} ?>>
       <label class="form-check-label" for="promoEvents">
         Promotional Events
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="collections" id="collections">
+      <input class="form-check-input" type="checkbox" value="1" name="collections" id="collections" <?php if(isset($_SESSION['collections'])){echo "checked";} ?>>
       <label class="form-check-label" for="collections">
         Supermarket Collections
       </label>
@@ -105,19 +116,19 @@ if(isset($_POST['back'])){
   </div>
   <div class="form-row">
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="fundraising" id="fundraising">
+      <input class="form-check-input" type="checkbox" value="1" name="fundraising" id="fundraising" <?php if(isset($_SESSION['fundraising'])){echo "checked";} ?>>
       <label class="form-check-label" for="fundraising">
         Fundraising
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="buddyScheme" id="buddyScheme">
+      <input class="form-check-input" type="checkbox" value="1" name="buddyScheme" id="buddyScheme" <?php if(isset($_SESSION['buddy'])){echo "checked";} ?>>
       <label class="form-check-label" for="buddyScheme">
         Buddy Scheme
       </label>
     </div>
     <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="checkbox" value="1" name="delivery" id="delivery">
+      <input class="form-check-input" type="checkbox" value="1" name="delivery" id="delivery" <?php if(isset($_SESSION['delivery'])){echo "checked";} ?>>
       <label class="form-check-label" for="delivery">
         Delivery or Collections (own car)
       </label>
@@ -182,7 +193,7 @@ if(isset($_POST['back'])){
   <div class="form-row">
     <div class="form-group col-md-12">
     <label for="otherNotes">Other notes:</label>
-    <textarea class="form-control" name="otherNotes" id="otherNotes" rows="3" value=""></textarea>
+    <textarea class="form-control" name="otherNotes" id="otherNotes" rows="3"><?php if(isset($_SESSION['notes'])){echo $_SESSION['notes'];} ?></textarea>
     </div>
   </div>
   <br>

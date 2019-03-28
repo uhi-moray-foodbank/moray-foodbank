@@ -2,25 +2,32 @@
 $title = "Registration - Step One";
 include("header.php");
 
-if(isset($_POST['submit'])){
-  $_SESSION['title'] = $_POST['title'];
-  $_SESSION['fname'] = $_POST['firstname'];
-  $_SESSION['lname'] = $_POST['lname'];
-  $_SESSION['email'] = $_POST['email'];
-  $_SESSION['line1'] = $_POST['line1'];
-  $_SESSION['line2'] = $_POST['line2'];
-  $_SESSION['city'] = $_POST['address3'];
-  $_SESSION['postcode'] = $_POST['postcode'];
-  $_SESSION['phone'] = $_POST['phoneNo'];
-  $_SESSION['dofb'] = $_POST['dofb'];
-  
-  $_SESSION['cType'] = $_POST['contactType'];
-  $_SESSION['cName'] = $_POST['contactName'];
-  $_SESSION['cPhone'] = $_POST['contactPhone'];
-  $_SESSION['relationship'] = $_POST['contactRel'];
-  
+$error = "";
 
-  header("Location: register-b.php");
+if(isset($_POST['submit'])){
+	if(empty($_POST['title']) && empty($_POST['firstname']) && empty($_POST['lname'])){
+		$_SESSION['title'] = $_POST['title'];
+		$_SESSION['fname'] = $_POST['firstname'];
+		$_SESSION['lname'] = $_POST['lname'];
+		$_SESSION['email'] = $_POST['email'];
+		$_SESSION['line1'] = $_POST['line1'];
+		$_SESSION['line2'] = $_POST['line2'];
+		$_SESSION['city'] = $_POST['address3'];
+		$_SESSION['postcode'] = $_POST['postcode'];
+		$_SESSION['phone'] = $_POST['phoneNo'];
+		$_SESSION['dofb'] = $_POST['dofb'];
+		
+		$_SESSION['cType'] = $_POST['contactType'];
+		$_SESSION['cName'] = $_POST['contactName'];
+		$_SESSION['cPhone'] = $_POST['contactPhone'];
+		$_SESSION['relationship'] = $_POST['contactRel'];
+		
+		header("Location: register-b.php");
+	}else{
+		$error = "Error! Need to fill in title, firstname, and lastname fields before moving fowards";
+		
+	}
+
 }
 
 if(isset($_POST['cancel'])){
@@ -71,15 +78,15 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="title">TITLE*</label>
-      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>" required>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>">
     </div>
     <div class="form-group col-md-4">
       <label for="firstName">FIRST NAME*</label>
-      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>" required>
+      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="lname">SURNAME*</label>
-      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>" required>
+      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>">
     </div>
   </div>
   <div class="form-row">
@@ -149,6 +156,7 @@ if(isset($_POST['cancel'])){
 		<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">
 		<!--<button type="submit" class="btn btn-primary">Next</button>-->
 		<input type ="submit" name="submit" class ="btn btn-primary" value="Next">
+		<?php echo $error; ?>
     </div>
   </div>
 </form>

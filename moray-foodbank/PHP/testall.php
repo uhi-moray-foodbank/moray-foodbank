@@ -130,7 +130,7 @@ $query = mysqli_query($connection, $sql);
 			
 			//Actually populates the table with the information taken or created from the database
 			echo "<tr>";
-			echo "<td>" .$fullname. "</td>";
+			echo '<td><a href="volunteer.php?volunteer=' . $row['id']. '">' .$fullname.'</a></td>';
 			echo "<td>" . $days . "</td>";
 			echo "<td>" . $saltire . "</td>";
 			//Populates extra column if user wants to see archived entries.

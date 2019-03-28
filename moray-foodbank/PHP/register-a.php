@@ -5,7 +5,7 @@ include("header.php");
 $error = "";
 
 if(isset($_POST['submit'])){
-	if(isset($_POST['title']) && isset($_POST['firstname']) && isset($_POST['lname'])){
+	if(empty($_POST['title']) && empty($_POST['firstname']) && empty($_POST['lname'])){
 		$_SESSION['title'] = $_POST['title'];
 		$_SESSION['fname'] = $_POST['firstname'];
 		$_SESSION['lname'] = $_POST['lname'];
@@ -78,15 +78,15 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-2">
       <label for="title">TITLE*</label>
-      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>" required>
+      <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="<?php if(isset($_SESSION['title'])){echo $_SESSION['title'];} ?>">
     </div>
     <div class="form-group col-md-4">
       <label for="firstName">FIRST NAME*</label>
-      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>" required>
+      <input type="text" class="form-control" name="firstname" id="firstName" placeholder="First Name" value="<?php if(isset($_SESSION['fname'])){echo $_SESSION['fname'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="lname">SURNAME*</label>
-      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>" required>
+      <input type="text" class="form-control" name="lname" id="lname" placeholder="Surname" value="<?php if(isset($_SESSION['lname'])){echo $_SESSION['lname'];} ?>">
     </div>
   </div>
   <div class="form-row">

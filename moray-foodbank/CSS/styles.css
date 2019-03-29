@@ -5,7 +5,7 @@ html, body {
 
 .header-wrapper {
   background-color: #235681;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .header a {
@@ -15,16 +15,22 @@ html, body {
 
 .header-menu {
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .header-logo img {
   display: block;
   margin: 0 auto;    
-  /*max-height: 60px;*/
+  max-height: 60px;
 }
 
 .header-account {
   text-align: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /*********************SIDEBAR MENU START****************/
@@ -82,7 +88,7 @@ html, body {
 .hero-container {
     color: #fff;
     text-align: center;
-    padding: 2% 10%;
+    padding: 1% 10%;
     display: block;
 }
 

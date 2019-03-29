@@ -165,8 +165,8 @@ if(isset($_POST['cancel'])){
     <div class="form-group col-md-6">
       <label for="contactType">CONTACT TYPE</label>
       <select class="form-control" id="contactType" name="contactType">
-		<option value="0">Support</option>
-        <option value="1" <?php if((isset($_SESSION['cType'])) && $_SESSION['cType']=="1"){echo "selected";}?>>Emergency</option>
+		<option value="Support">Support</option>
+        <option value="Emergency" <?php if((isset($_SESSION['cType'])) && $_SESSION['cType']=="Emergency"){echo "selected";}?>>Emergency</option>
       </select>
     </div>
   </div>

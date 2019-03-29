@@ -214,11 +214,11 @@ if(isset($_POST['back'])){
     <div class="form-group col-md-6">
       <label for="pvg">PVG</label>
       <select class="form-control" id="pvg" name="pvg">
-		    <option value="0">Can't check</option>
-        <option value="1" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="1"){echo "selected";}?>>Can Check</option>
-        <option value="2" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="2"){echo "selected";}?>>Incoming</option>
-        <option value="3" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="3"){echo "selected";}?>>Passed</option>
-        <option value="4" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="4"){echo "selected";}?>>Failed</option>
+		    <option value="Cannot check">Can't check</option> <!-- TODO: Change "Can't change" to "Cannot change" in database. -->
+        <option value="Can check" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Can check"){echo "selected";}?>>Can Check</option>
+        <option value="Incoming" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Incoming"){echo "selected";}?>>Incoming</option>
+        <option value="Passed" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Passed"){echo "selected";}?>>Passed</option>
+        <option value="Failed" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Failed"){echo "selected";}?>>Failed</option>
       </select>
     </div>
   </div>

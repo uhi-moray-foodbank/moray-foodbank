@@ -1,6 +1,9 @@
 <?php
 session_start();
 
+//Connects to database
+require_once("DB_Connector.php");
+
 //Checks if user is logged in. If they are not, redirect them to the login page.
 if(!isset($_SESSION['Username'])){
 	header("Location: ../index.php");

@@ -2,9 +2,6 @@
 $title = "View Volunteer";
 include("header.php");
 
-//Connects to database
-require_once("DB_Connector.php");
-
 if(isset($_GET['volunteer'])){
 	$id=$_GET['volunteer'];
 	

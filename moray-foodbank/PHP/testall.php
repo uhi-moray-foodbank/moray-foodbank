@@ -2,9 +2,6 @@
 $title = "Search Database";
 include("header.php");
 
-//Connects to database
-require_once("DB_Connector.php");
-
 //The basic query for if no inputs are given to the search bar or checkboxes
 $sql = "SELECT v.id, CONCAT(lname,', ',fname) AS 'fullname', mon, tue, wed, thu, fri, saltire FROM volunteer v, days d
 WHERE v.id = d.id

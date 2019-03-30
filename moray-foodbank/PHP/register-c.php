@@ -4,98 +4,62 @@ include("header.php");
 
 if(isset($_POST['submit']) || isset($_POST['back'])){
   
-  if(!empty($_POST['foodbankCentre'])){
-    $_SESSION['foodbankCentre'] = $_POST['foodbankCentre'];
-  } else {
-    $_SESSION['foodbankCentre'] = "0";
-  }
-  if(!empty($_POST['promoEvents'])){
-    $_SESSION['promoEvents'] = $_POST['promoEvents'];
-  } else {
-    $_SESSION['promoEvents'] = "0";
-  }
-  if(!empty($_POST['collections'])){
-    $_SESSION['collections'] = $_POST['collections'];
-  } else {
-    $_SESSION['collections'] = "0";
-  }
-  if(!empty($_POST['fundraising'])){
-    $_SESSION['fundraising'] = $_POST['fundraising'];
-  } else {
-    $_SESSION['fundraising'] = "0";
-  }
-  if(!empty($_POST['buddyScheme'])){
-    $_SESSION['buddyScheme'] = $_POST['buddyScheme'];
-  } else {
-    $_SESSION['buddyScheme'] = "0";
-  }
-  if(!empty($_POST['delivery'])){
-    $_SESSION['delivery'] = $_POST['delivery'];
-  } else {
-    $_SESSION['delivery'] = "0";
-  }
-  if(!empty($_POST['drivers'])){
-    $_SESSION['drivers'] = $_POST['drivers'];
-  } else {
-    $_SESSION['drivers'] = "0";
-  }
-  if(!empty($_POST['cooking'])){
-    $_SESSION['cooking'] = $_POST['cooking'];
-  } else {
-    $_SESSION['cooking'] = "0";
-  }
-  if(!empty($_POST['store'])){
-    $_SESSION['store'] = $_POST['store'];
-  } else {
-    $_SESSION['store'] = "0";
-  }
-  if(!empty($_POST['adhoc'])){
-    $_SESSION['adhoc'] = $_POST['adhoc'];
-  } else {
-    $_SESSION['adhoc'] = "0";
-  }
-  if(!empty($_POST['external'])){
-    $_SESSION['external'] = $_POST['external'];
-  } else {
-    $_SESSION['external'] = "0";
-  }
+  //IF (checkbox isn't empty), set SESSION variable equal to checkbox value
+  //ELSE SESSION variable is 0.
+  if(!empty($_POST['foodbankCentre'])) $_SESSION['foodbankCentre'] = $_POST['foodbankCentre'];
+  else $_SESSION['foodbankCentre'] = "0";
   
-  if(!empty($_POST['mon'])){
-    $_SESSION['mon'] = $_POST['mon'];
-  } else {
-    $_SESSION['mon'] = "0";
-  }
-  if(!empty($_POST['tue'])){
-    $_SESSION['tue'] = $_POST['tue'];
-  } else {
-    $_SESSION['tue'] = "0";
-  }
-  if(!empty($_POST['wed'])){
-    $_SESSION['wed'] = $_POST['wed'];
-  } else {
-    $_SESSION['wed'] = "0";
-  }
-  if(!empty($_POST['thu'])){
-    $_SESSION['thu'] = $_POST['thu'];
-  } else {
-    $_SESSION['thu'] = "0";
-  }
-  if(!empty($_POST['fri'])){
-    $_SESSION['fri'] = $_POST['fri'];
-  } else {
-    $_SESSION['fri'] = "0";
-  }
-  if(!empty($_POST['sat'])){
-    $_SESSION['sat'] = $_POST['sat'];
-  } else {
-    $_SESSION['sat'] = "0";
-  }
-  if(!empty($_POST['sun'])){
-    $_SESSION['sun'] = $_POST['sun'];
-  } else {
-    $_SESSION['sun'] = "0";
-  }
-	
+  if(!empty($_POST['promoEvents'])) $_SESSION['promoEvents'] = $_POST['promoEvents'];
+  else $_SESSION['promoEvents'] = "0";
+  
+  if(!empty($_POST['collections'])) $_SESSION['collections'] = $_POST['collections'];
+  else $_SESSION['collections'] = "0";
+  
+  if(!empty($_POST['fundraising'])) $_SESSION['fundraising'] = $_POST['fundraising'];
+  else $_SESSION['fundraising'] = "0";
+  
+  if(!empty($_POST['buddyScheme'])) $_SESSION['buddyScheme'] = $_POST['buddyScheme'];
+  else $_SESSION['buddyScheme'] = "0";
+  
+  if(!empty($_POST['delivery'])) $_SESSION['delivery'] = $_POST['delivery'];
+  else $_SESSION['delivery'] = "0";
+  
+  if(!empty($_POST['drivers'])) $_SESSION['drivers'] = $_POST['drivers'];
+  else $_SESSION['drivers'] = "0";
+  
+  if(!empty($_POST['cooking'])) $_SESSION['cooking'] = $_POST['cooking'];
+  else $_SESSION['cooking'] = "0";
+  
+  if(!empty($_POST['store'])) $_SESSION['store'] = $_POST['store'];
+  else $_SESSION['store'] = "0";
+  
+  if(!empty($_POST['adhoc'])) $_SESSION['adhoc'] = $_POST['adhoc'];
+  else $_SESSION['adhoc'] = "0";
+  
+  if(!empty($_POST['external'])) $_SESSION['external'] = $_POST['external'];
+  else $_SESSION['external'] = "0";
+  
+  if(!empty($_POST['mon'])) $_SESSION['mon'] = $_POST['mon'];
+  else $_SESSION['mon'] = "0";
+  
+  if(!empty($_POST['tue'])) $_SESSION['tue'] = $_POST['tue'];
+  else $_SESSION['tue'] = "0";
+  
+  if(!empty($_POST['wed'])) $_SESSION['wed'] = $_POST['wed'];
+  else $_SESSION['wed'] = "0";
+  
+  if(!empty($_POST['thu'])) $_SESSION['thu'] = $_POST['thu'];
+  else $_SESSION['thu'] = "0";
+  
+  if(!empty($_POST['fri'])) $_SESSION['fri'] = $_POST['fri'];
+  else $_SESSION['fri'] = "0";
+  
+  if(!empty($_POST['sat'])) $_SESSION['sat'] = $_POST['sat'];
+  else $_SESSION['sat'] = "0";
+  
+  if(!empty($_POST['sun'])) $_SESSION['sun'] = $_POST['sun'];
+  else $_SESSION['sun'] = "0";
+  	
 	$_SESSION['otherNotes'] = $_POST['otherNotes'];
   
   //Navigation buttons

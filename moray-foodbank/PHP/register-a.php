@@ -7,23 +7,6 @@ $errorFName = false;
 $errorLName = false;
 
 if(isset($_POST['submit'])){
-  if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname']))
-  {	
-		header("Location: register-b.php");
-	}else{
-    if(empty($_POST['title']))
-    {
-      $errorTitle = true;
-    }
-    if(empty($_POST['firstname']))
-    {
-      $errorFName = true;
-    }
-    if(empty($_POST['lname']))
-    {
-      $errorLName = true;
-    }
-  }
   $_SESSION['title'] = $_POST['title'];
   $_SESSION['fname'] = $_POST['firstname'];
   $_SESSION['lname'] = $_POST['lname'];
@@ -39,11 +22,18 @@ if(isset($_POST['submit'])){
   $_SESSION['cName'] = $_POST['contactName'];
   $_SESSION['cPhone'] = $_POST['contactPhone'];
   $_SESSION['relationship'] = $_POST['contactRel'];
+
+  if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])) {	
+		header("Location: register-b.php");
+	} else {
+    if(empty($_POST['title'])) $errorTitle = true;
+    if(empty($_POST['firstname'])) $errorFName = true;
+    if(empty($_POST['lname'])) $errorLName = true;
+  }
 }
 
 if(isset($_POST['cancel'])){
-	header("Location: home.php");
-	
+	header("Location: home.php");	
 }
 ?>
 

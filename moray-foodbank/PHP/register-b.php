@@ -2,7 +2,7 @@
 $title = "Registration - Step Two";
 include("header.php");
 
-if(isset($_POST['submit'])){
+if(isset($_POST['submit']) || isset($_POST['back'])){
 	$_SESSION['refName1'] = $_POST['refName1'];
 	$_SESSION['refName2'] = $_POST['refName2'];
 	$_SESSION['refPhone1'] = $_POST['refPhone1'];
@@ -12,21 +12,10 @@ if(isset($_POST['submit'])){
 	$_SESSION['refRel1'] = $_POST['refRel1'];
 	$_SESSION['refRel2'] = $_POST['refRel2'];
 	
-	
-	header("Location: register-c.php");
-}
-
-if(isset($_POST['back'])){
-	$_SESSION['refName1'] = $_POST['refName1'];
-	$_SESSION['refName2'] = $_POST['refName2'];
-	$_SESSION['refPhone1'] = $_POST['refPhone1'];
-	$_SESSION['refPhone2'] = $_POST['refPhone2'];
-	$_SESSION['refEmail1'] = $_POST['refEmail1'];
-	$_SESSION['refEmail2'] = $_POST['refEmail2'];
-	$_SESSION['refRel1'] = $_POST['refRel1'];
-	$_SESSION['refRel2'] = $_POST['refRel2'];
-	
-	header("Location: register-a.php");
+	if(isset($_POST['submit']))
+    header("Location: register-c.php");
+  if(isset($_POST['back']))
+    header("Location: register-a.php");
 }
 ?>
 

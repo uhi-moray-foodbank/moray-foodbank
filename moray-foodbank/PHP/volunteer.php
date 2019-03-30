@@ -22,8 +22,10 @@ if(isset($_GET['volunteer'])){
     </div>
 </div>
 
-<p><?php echo $row['title']." ".$row['fname']." ".$row['lname']; ?></p>
-<table>
+<div class="container">
+<form class="volunteer-details" action="" method="post">
+	<h2><?php echo $row['title']." ".$row['fname']." ".$row['lname']; ?></h2>
+	<table class="volunteer-details">
 
 		<tr><th>Address</th><td><?php echo $row['line1'].", ".$row['line2'].", ".$row['city'];?></td></tr>
 		<tr><th>Postcode</th><td><?php echo $row['postcode']; ?></td></tr>
@@ -32,8 +34,14 @@ if(isset($_GET['volunteer'])){
 		<tr><th>Date of Birth</th><td><?php echo $row['dofb']; ?></td></tr>
 		<tr><th>Start Date</th><td><?php echo $row['startdate']; ?></td></tr>
 
-</table>
-
+	</table>
+	<div class="form-row">
+    <div class="form-group col-md-6 offset-md-3 form-buttons">
+      <input type ="submit" name="edit" class ="btn btn-primary" value="Edit Details">
+    </div>
+  </div>
+</form>
+</div>
 </main>
 </body>
 </html>

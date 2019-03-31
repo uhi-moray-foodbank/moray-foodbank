@@ -319,3 +319,9 @@ main {
 .card-body {
   text-align: center;
 }
+
+/** VOLUNTEER DETAILS **/
+
+.volunteer-details th, td {
+  padding: 5px 10px;
+}

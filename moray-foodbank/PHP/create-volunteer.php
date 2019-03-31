@@ -1,7 +1,6 @@
 <?php
 $title = "Registration - Final";
 include("header.php");
-require_once('DB_Connector.php');
 
 $tempUsername = $_SESSION['Username'];
 

@@ -73,6 +73,7 @@ include("PHP/ADMLoginHash.php");
 				</table>
 			</form>';
 	}
+	echo $error;
 ?>
 </div>
 </main>

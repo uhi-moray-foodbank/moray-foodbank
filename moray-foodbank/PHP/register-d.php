@@ -59,7 +59,7 @@ if(isset($_POST['submit']) || isset($_POST['back'])){
   else $_SESSION['hsSigned'] = "0";
 
   //Navigation buttons
-	if(isset($_POST['submit']))
+  if(isset($_POST['submit']))
     header("Location: create-volunteer.php");
   if(isset($_POST['back']))
     header("Location: register-c.php");

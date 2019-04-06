@@ -15,7 +15,7 @@ $sql .= "'" . $_SESSION['line1'] . "', ";
 $sql .= "'" . $_SESSION['line2'] . "', ";
 $sql .= "'" . $_SESSION['city'] . "', ";
 $sql .= "'" . $_SESSION['postcode'] . "',";
-$sql .= "'" . $_SESSION['phoneNo'] . "', ";
+$sql .= "'" . $_SESSION['phone'] . "', ";
 $sql .= "'" . $_SESSION['email'] . "',";
 $sql .= "'" . $_SESSION['dofb'] . "', ";
 $sql .= "'" . $currentDate . "',";
@@ -30,30 +30,30 @@ $row = mysqli_fetch_assoc($query);
 $id = $row['id'];
 
 //Reference table 1
-$sql = "INSERT INTO reference (id, refNo, refName, refEmail, refTel, refRel) VALUES (";
+$sql = "INSERT INTO reference (id, refNo, refName, refEmail, refTel, refRelation) VALUES (";
 $sql .= "'" . $id . "', ";
 $sql .= "'" . "1" . "', ";
 $sql .= "'" . $_SESSION['refName1'] . "', ";
 $sql .= "'" . $_SESSION['refEmail1'] . "', ";
-$sql .= "'" . $_SESSION['refTel1'] . "', ";
-$sql .= "'" . $_SESSION['refRel1'] . "'); ";
+$sql .= "'" . $_SESSION['refPhone1'] . "', ";
+$sql .= "'" . $_SESSION['refRel1'] . "'); ";	
 
 $result = mysqli_query($connection, $sql);
 
 
 //Reference table 2
-$sql = "INSERT INTO reference (id, refNo, refName, refEmail, refTel, refRel) VALUES (";
+$sql = "INSERT INTO reference (id, refNo, refName, refEmail, refTel, refRelation) VALUES (";
 $sql .= "'" . $id . "', ";
-$sql .= "'" . "1" . "', ";
+$sql .= "'" . "2" . "', ";
 $sql .= "'" . $_SESSION['refName2'] . "', ";
 $sql .= "'" . $_SESSION['refEmail2'] . "', ";
-$sql .= "'" . $_SESSION['refTel2'] . "', ";
+$sql .= "'" . $_SESSION['refPhone2'] . "', ";
 $sql .= "'" . $_SESSION['refRel2'] . "'); ";
 
 $result = mysqli_query($connection, $sql);
 
 //Days table
-$sql = "INSERT INTO reference (id, mon, tue, wed, thu, fri) VALUES (";
+$sql = "INSERT INTO days (id, mon, tue, wed, thu, fri) VALUES (";
 $sql .= "'" . $id . "', ";
 $sql .= "'" . $_SESSION['mon'] . "', ";
 $sql .= "'" . $_SESSION['tue'] . "', ";
@@ -85,6 +85,46 @@ $sql .= "'" . $_SESSION['confAgree'] . "', ";
 $sql .= "'" . $_SESSION['hsSigned'] . "');";
 
 $result = mysqli_query($connection, $sql);
+
+
+
+//Roles table
+$sql = "INSERT INTO roles (id, foodbankCentre, promoEvents, collections, fundraising, buddyScheme, delivery, drivers, cooking, store, adhoc, external) VALUES (";
+$sql .= "'" . $id . "', ";
+$sql .= "'" . $_SESSION['foodbankCentre'] . "', ";
+$sql .= "'" . $_SESSION['promoEvents'] . "', ";
+$sql .= "'" . $_SESSION['collections'] . "', ";
+$sql .= "'" . $_SESSION['fundraising'] . "', ";
+$sql .= "'" . $_SESSION['buddyScheme'] . "', ";
+$sql .= "'" . $_SESSION['delivery'] . "', ";
+$sql .= "'" . $_SESSION['divers'] . "', ";
+$sql .= "'" . $_SESSION['cooking'] . "', ";
+$sql .= "'" . $_SESSION['store'] . "', ";
+$sql .= "'" . $_SESSION['adhoc'] . "', ";
+$sql .= "'" . $_SESSION['external'] . "');";
+
+$result = mysqli_query($connection, $sql);
+
+//Target groups table
+$sql = "INSERT INTO targetGroups (id, lowIncome, mentalHealth, disabilityPhysical, disabilityMental, chronicCondition, carers, abused, lgbti, offenders, youngRisk, homeless, addiction, singleParent, ethnicMinority) VALUES (";
+$sql .= "'" . $id . "', ";
+$sql .= "'" . $_SESSION['lowIncome'] . "', ";
+$sql .= "'" . $_SESSION['mentalHealth'] . "', ";
+$sql .= "'" . $_SESSION['disabilityPhysical'] . "', ";
+$sql .= "'" . $_SESSION['disabilityMental'] . "', ";
+$sql .= "'" . $_SESSION['chronicCondition'] . "', ";
+$sql .= "'" . $_SESSION['carers'] . "', ";
+$sql .= "'" . $_SESSION['abused'] . "', ";
+$sql .= "'" . $_SESSION['lgbti'] . "', ";
+$sql .= "'" . $_SESSION['offenders'] . "', ";
+$sql .= "'" . $_SESSION['youngRisk'] . "', ";
+$sql .= "'" . $_SESSION['homeless'] . "', ";
+$sql .= "'" . $_SESSION['addiction'] . "', ";
+$sql .= "'" . $_SESSION['singleParent'] . "', ";
+$sql .= "'" . $_SESSION['ethnicMinority'] . "');";
+
+$result = mysqli_query($connection, $sql);
+
 
 // remove all session variables
 session_unset();

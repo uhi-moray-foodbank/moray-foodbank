@@ -9,8 +9,6 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 	//If there was a submit posted, set the username and password in the database to equal the username and password variables
 	$username = $_POST[ 'username' ];
 	$password = $_POST[ 'password' ];
-	echo $username . "<br />";
-	echo $password;
 
 	$query = mysqli_query( $connection, "SELECT * FROM admin_ WHERE username = '$username'" ); 
 	$rows = mysqli_fetch_assoc($query);
@@ -22,7 +20,7 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 		$_SESSION['ID'] = $testing;
 		header("Location: home.php");
 	}else{
-		echo "Invalid entry";
+		$error =  "Invalid entry";
 	}
 }
 ?>

@@ -33,7 +33,17 @@ if(isset($_GET['volunteer'])){
 	//Roles
 	$roles_sql = "SELECT * FROM roles WHERE id = '".$id."';";
 	$roles_query = mysqli_query($connection, $roles_sql);
-	$roles_row = mysqli_fetch_assoc($roles_query);	
+	$roles_row = mysqli_fetch_assoc($roles_query);
+
+	//Target Groups
+	$target_sql = "SELECT * FROM targetGroups WHERE id = '".$id."';";
+	$target_query = mysqli_query($connection, $target_sql);
+	$target_row = mysqli_fetch_assoc($target_query);	
+
+	//Record Card
+	$record_sql = "SELECT * FROM recordCard WHERE id = '".$id."';";
+	$record_query = mysqli_query($connection, $record_sql);
+	$record_row = mysqli_fetch_assoc($record_query);
 	
 }else{
 	Header("Location: testall.php");
@@ -170,6 +180,87 @@ if(isset($_GET['volunteer'])){
 		
 		echo "<h2> Roles: </h2>";
 		echo "<p>".$roles."</p>";
+		echo "<br>";
+		
+		//Target Groups
+		$target = "";
+		if($target_row['lowIncome'] ==1){
+			$target .= "|Low Income|";
+		}
+		if($target_row['mentalHealth'] ==1){
+			$target .= "|Mental Health|";
+		}
+		if($target_row['disabilityPhysical'] ==1){
+			$target .= "|Physical Disability|";
+		}
+		if($target_row['chronicCondition'] ==1){
+			$target .= "|Chronic Condition|";
+		}
+		if($target_row['carers'] ==1){
+			$target .= "|Carer|";
+		}
+		if($target_row['abused'] ==1){
+			$target .= "|Abused|";
+		}
+		if($target_row['lgbti'] ==1){
+			$target .= "|LGBTI|";
+		}
+		if($target_row['offenders'] ==1){
+			$target .= "|Offender|";
+		}
+		if($target_row['youngRisk'] ==1){
+			$target .= "|Young Risk|";
+		}
+		if($target_row['homeless'] ==1){
+			$target .= "|Homeless|";
+		}
+		if($target_row['addiction'] ==1){
+			$target .= "|Addiction|";
+		}
+		if($target_row['singleParent'] ==1){
+			$target .= "|Single Parent|";
+		}
+		if($target_row['ethnicMinority'] ==1){
+			$target .= "|Ethnic Minority|";
+		}
+		
+		echo "<h2> Target Groups: </h2>";
+		echo "<p>".$target."</p>";
+		
+		echo "<br>";
+		
+		//Record Card
+		echo "<h2>Health Issues: </h2>";
+		echo "<p>".$record_row['healthIssues']."</p>";
+		
+		echo "<h2>PD Request: </h2>";
+		echo "<p>".$record_row['pdRequest']."</p>";
+		
+		echo "<h2>Other Information: </h2>";
+		echo "<p>".$record_row['otherInfo']."</p>";
+		
+		echo "<h2>PVG Check: </h2>";
+		echo "<p>".$record_row['pvg']."</p>";
+
+		$confAgree = $record_row['confAgree'];
+		$hsSigned = $record_row['hsSigned'];
+
+		
+		echo "<h2>Confidentiality Agreement Signed: </h2>";
+		if($confAgree = 1){
+			echo "<p>Yes</p>";
+		}else{
+			echo "<p>No</p>";
+		}
+		echo "<h2>H&S checklist complete: </h2>";
+		if($hsSigned = 1){
+			echo "<p>Yes</p>";
+		}else{
+			echo "<p>No</p>";
+		}
+		
+		
+		
 		
 	?>
 	<div class="form-row">

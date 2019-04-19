@@ -129,9 +129,6 @@ $result = mysqli_query($connection, $sql);
 // remove all session variables
 session_unset();
 
-// destroy the session
-session_destroy();
-
 $_SESSION['Username'] = $tempUsername;
 
 header("location: home.php");

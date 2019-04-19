@@ -122,7 +122,7 @@ if(isset($_POST['cancel'])){
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="dofb">DATE OF BIRTH</label>
-      <input type="date" class="form-control" name="dofb" id="dofb" placeholder="Date of birth" value="<?php if(isset($_SESSION['dofb'])){echo $_SESSION['dofb'];} ?>">
+      <input type="date" class="form-control" name="dofb" id="dofb" placeholder="Date of birth" min="1900-01-01" max= <?php echo date('Y-m-d'); ?> value="<?php if(isset($_SESSION['dofb'])){echo $_SESSION['dofb'];} ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="address3">CITY</label>

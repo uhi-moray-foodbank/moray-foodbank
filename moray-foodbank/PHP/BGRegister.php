@@ -17,7 +17,7 @@ if ( isset( $_POST[ 'submit' ] ) ) {
 
 		//echo $hash;
 
-		$sql = "INSERT admin ";
+		$sql = "INSERT admin_ ";
 		$sql .= "(username, pass) ";
 		$sql .= "VALUES (";
 		$sql .= "'" . $username . "', ";

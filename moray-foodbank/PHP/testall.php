@@ -16,36 +16,53 @@ if(isset($_POST['submit'])){
 		$surname = $_POST['surname'];
 		echo $surname;
 		$sql .=  " AND lname LIKE '%".$surname."%'";		
+		$_SESSION['search_sur'] = $surname;
 	}
 	
 	//Checks if user wants specified days to be available
 	if(isset($_POST['monday'])){
 		$sql .= "AND mon='1'";
+		$_SESSION['search_mon'] = 1;
 	}
 	if(isset($_POST['tuesday'])){
 		$sql .= "AND tue='1'";
+		$_SESSION['search_tue'] = 1;
 	}	
 	if(isset($_POST['wednesday'])){
 		$sql .= "AND wed='1'";
+		$_SESSION['search_wed'] = 1;
 	}
 	if(isset($_POST['thursday'])){
 		$sql .= "AND thu='1'";
+		$_SESSION['search_thu'] = 1;
 	}
 	if(isset($_POST['friday'])){
 		$sql .= "AND fri='1'";
+		$_SESSION['search_fri'] = 1;
 	}
 	
 	//Checks if user wants to see archived people as well
 	if(isset($_POST['archived'])){
 		$sql = substr_replace($sql,", archived ", 85, 0);
+		$_SESSION['search_archive'] = 1;
 	}else{
 		$sql .= "AND archived IS NULL";
 	}
-}
 
+	
+}else if(isset($_POST['clear'])){
+	unset($_SESSION['search_archive']);
+	unset($_SESSION['search_fri']);
+	unset($_SESSION['search_thu']);
+	unset($_SESSION['search_wed']);
+	unset($_SESSION['search_tue']);
+	unset($_SESSION['search_mon']);
+	unset($_SESSION['search_sur']);
+
+}
 //Close the sql statement and run the query
-$sql .= ";";
-$query = mysqli_query($connection, $sql);
+	$sql .= ";";
+	$query = mysqli_query($connection, $sql);
 
 ?>
 
@@ -59,16 +76,18 @@ $query = mysqli_query($connection, $sql);
 <div class="container">
 <!--The search inputs to specifiy the volunteers the user is looking for-->
 <form method="post" class="volunteer-form">
-	Surname: <input type = "text" name="surname">
-	Mon <input type = "checkbox" name = "monday">
-	Tue	<input type = "checkbox" name = "tuesday">
-	Wed	<input type = "checkbox" name = "wednesday">
-	Thu	<input type = "checkbox" name = "thursday">
-	Fri	<input type = "checkbox" name = "friday">
+	Surname: &nbsp; <input type = "text" name="surname"  <?php if($_SESSION['search_mon']==1){echo 'value="'.$_SESSION['search_sur'].'"';}?>>
+	<label>&nbsp;&nbsp; Days: </label>
+	Mon <input type = "checkbox" name = "monday" <?php if($_SESSION['search_mon']==1){echo "checked";}?>>
+	Tue	<input type = "checkbox" name = "tuesday" <?php if($_SESSION['search_tue']==1){echo "checked";}?>>
+	Wed	<input type = "checkbox" name = "wednesday" <?php if($_SESSION['search_wed']==1){echo "checked";}?>>
+	Thu	<input type = "checkbox" name = "thursday" <?php if($_SESSION['search_thu']==1){echo "checked";}?>>
+	Fri	<input type = "checkbox" name = "friday" <?php if($_SESSION['search_fri']==1){echo "checked";}?>>
 	
 	<br>
 	<input type ="submit" name="submit" class ="btn btn-primary" value="Search">
-	<input type = "checkbox" name = "archived" value = "archived">Include archived?
+	<input type ="submit" name="clear" class ="btn btn-primary" value="Clear Filters">
+	<input type = "checkbox" name = "archived" value = "archived"  <?php if($_SESSION['search_archive']==1){echo "checked";}?>> &nbsp;&nbsp;Include archived?
 
 </form>
 </div>

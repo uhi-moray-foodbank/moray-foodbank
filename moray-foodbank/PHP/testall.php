@@ -76,18 +76,18 @@ if(isset($_POST['submit'])){
 <div class="container">
 <!--The search inputs to specifiy the volunteers the user is looking for-->
 <form method="post" class="volunteer-form">
-	Surname: &nbsp; <input type = "text" name="surname"  <?php if($_SESSION['search_mon']==1){echo 'value="'.$_SESSION['search_sur'].'"';}?>>
+	Surname: &nbsp; <input type = "text" name="surname"  value="<?php if(isset($_SESSION['search_sur'])){echo $_SESSION['search_sur'];}?>">
 	<label>&nbsp;&nbsp; Days: </label>
-	Mon <input type = "checkbox" name = "monday" <?php if($_SESSION['search_mon']==1){echo "checked";}?>>
-	Tue	<input type = "checkbox" name = "tuesday" <?php if($_SESSION['search_tue']==1){echo "checked";}?>>
-	Wed	<input type = "checkbox" name = "wednesday" <?php if($_SESSION['search_wed']==1){echo "checked";}?>>
-	Thu	<input type = "checkbox" name = "thursday" <?php if($_SESSION['search_thu']==1){echo "checked";}?>>
-	Fri	<input type = "checkbox" name = "friday" <?php if($_SESSION['search_fri']==1){echo "checked";}?>>
+	Mon <input type = "checkbox" name = "monday" <?php if((isset($_SESSION['search_mon'])) && $_SESSION['search_mon']==1){echo "checked";}?>>
+	Tue	<input type = "checkbox" name = "tuesday" <?php if((isset($_SESSION['search_tue'])) && $_SESSION['search_tue']==1){echo "checked";}?>>
+	Wed	<input type = "checkbox" name = "wednesday" <?php if((isset($_SESSION['search_wed'])) && $_SESSION['search_wed']==1){echo "checked";}?>>
+	Thu	<input type = "checkbox" name = "thursday" <?php if((isset($_SESSION['search_thu'])) && $_SESSION['search_thu']==1){echo "checked";}?>>
+	Fri	<input type = "checkbox" name = "friday" <?php if((isset($_SESSION['search_fri'])) && $_SESSION['search_fri']==1){echo "checked";}?>>
 	
 	<br>
 	<input type ="submit" name="submit" class ="btn btn-primary" value="Search">
 	<input type ="submit" name="clear" class ="btn btn-primary" value="Clear Filters">
-	<input type = "checkbox" name = "archived" value = "archived"  <?php if($_SESSION['search_archive']==1){echo "checked";}?>> &nbsp;&nbsp;Include archived?
+	<input type = "checkbox" name = "archived" value = "archived"  <?php if((isset($_SESSION['search_archive'])) && $_SESSION['search_archive']==1){echo "checked";}?>> &nbsp;&nbsp;Include archived?
 
 </form>
 </div>

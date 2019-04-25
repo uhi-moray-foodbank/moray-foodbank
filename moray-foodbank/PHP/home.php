@@ -26,7 +26,7 @@ include("header.php");
             <div class="card-body">
                 <h5 class="card-title">Search Database</h5>
                 <p class="card-text">View the database and search for volunteers</p>
-                <a href="testall.php" class="btn btn-primary">Search</a>
+                <a href="viewall.php" class="btn btn-primary">Search</a>
             </div>
         </div>
         <div class="col col-12 col-sm-4 card" style="width: 18rem;">
@@ -34,7 +34,7 @@ include("header.php");
             <div class="card-body">
                 <h5 class="card-title">Print Forms & Reports</h5>
                 <p class="card-text">View different reports with the option of printing them.</p>
-                <a href="#" class="btn btn-primary">View</a>
+                <a href="reports.php" class="btn btn-primary">View</a>
             </div>
         </div>
     </div>

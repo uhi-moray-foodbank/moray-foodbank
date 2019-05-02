@@ -17,8 +17,8 @@ if(isset($_POST['report'])){
 	$query1 = mysqli_query($connection, $sql1);
 $query2 = mysqli_query($connection, $sql2);
 
-$result1 = mysqli_fetch_assoc['$query1'];
-$result2 = mysqli_fetch_assoc['$query2'];
+$result1 = mysqli_fetch_assoc($query1);
+$result2 = mysqli_fetch_assoc($query2);
 	
 }
 

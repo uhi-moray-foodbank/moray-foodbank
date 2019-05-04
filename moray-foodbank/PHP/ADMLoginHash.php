@@ -4,6 +4,7 @@ require_once( 'DB_Connector.php' );
 //Starts the session
 session_start();
 
+$error =  "";
 
 if ( isset( $_POST[ 'submit' ] ) ) {
 	//If there was a submit posted, set the username and password in the database to equal the username and password variables

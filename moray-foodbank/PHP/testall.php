@@ -14,7 +14,7 @@ if(isset($_POST['submit'])){
 	//Checks if anyone has a name similar or matching the one inputted
 	if(isset($_POST['surname'])){
 		$surname = $_POST['surname'];
-		echo $surname;
+		//echo $surname;
 		$sql .=  " AND lname LIKE '%".$surname."%'";		
 		$_SESSION['search_sur'] = $surname;
 	}
@@ -23,22 +23,32 @@ if(isset($_POST['submit'])){
 	if(isset($_POST['monday'])){
 		$sql .= "AND mon='1'";
 		$_SESSION['search_mon'] = 1;
+	} else if (empty($_POST['monday'])){
+		$_SESSION['search_mon'] = 0;
 	}
 	if(isset($_POST['tuesday'])){
 		$sql .= "AND tue='1'";
 		$_SESSION['search_tue'] = 1;
+	} else if (empty($_POST['tuesday'])){
+		$_SESSION['search_tue'] = 0;
 	}	
 	if(isset($_POST['wednesday'])){
 		$sql .= "AND wed='1'";
 		$_SESSION['search_wed'] = 1;
+	} else if (empty($_POST['wednesday'])){
+		$_SESSION['search_wed'] = 0;
 	}
 	if(isset($_POST['thursday'])){
 		$sql .= "AND thu='1'";
 		$_SESSION['search_thu'] = 1;
+	} else if (empty($_POST['thursday'])){
+		$_SESSION['search_thu'] = 0;
 	}
 	if(isset($_POST['friday'])){
 		$sql .= "AND fri='1'";
 		$_SESSION['search_fri'] = 1;
+	} else if (empty($_POST['friday'])){
+		$_SESSION['search_fri'] = 0;
 	}
 	
 	//Checks if user wants to see archived people as well
@@ -118,26 +128,58 @@ if(isset($_POST['submit'])){
 			$fri = $row['fri'];
 			$saltire = $row['saltire'];
 			
-			if(isset($_POST['archived'])){
+			if(isset($_POST['archived']) && isset($_SESSION['search_archive'])){
 				$archived = $row['archived'];
+			} else {
+				$archived = "";
 			}
 			
 			//Creates a string containing all the days a volunteer has available
 			$days = "";
 			if($mon ==1){
-				$days .= "M ";
+				$days .= "<div class='day-circle'>Mon</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
 			}
 			if($tue ==1){
-				$days .= "T ";
+				$days .= "<div class='day-circle'>Tue</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
 			}
 			if($wed ==1){
-				$days .= "W ";
+				$days .= "<div class='day-circle'>Wed</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
 			}
 			if($thu ==1){
-				$days .= "Th ";
+				$days .= "<div class='day-circle'>Thu</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
 			}
 			if($fri ==1){
-				$days .= "F ";
+				$days .= "<div class='day-circle'>Fri</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
 			}
 			
 			if($saltire==NULL){
@@ -145,7 +187,11 @@ if(isset($_POST['submit'])){
 			}
 			
 			//Actually populates the table with the information taken or created from the database
-			echo "<tr>";
+			if($archived != ""){
+				echo "<tr class='archived-row'>";
+			} else {
+				echo "<tr>";
+			}
 			echo '<td><a href="volunteer.php?volunteer=' . $row['id']. '">' .$fullname.'</a></td>';
 			echo "<td>" . $days . "</td>";
 			echo "<td>" . $saltire . "</td>";

@@ -263,12 +263,28 @@ if(isset($_GET['volunteer'])){
 		
 		
 	?>
+
+</form>
+	<form method = "post" action = "editAccount.php">
 	<div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
       <input type ="submit" name="edit" class ="btn btn-primary" value="Edit Details">
+	  <input type = "hidden" name = "id" id="id" value = "<?php echo $id; ?>">
+	  <input type = "hidden" name = "fname" id="fname" value = "<?php echo $fname; ?>">
+	  <input type = "hidden" name = "lname" id="lname" value = "<?php echo $lname; ?>">
+	  <input type = "hidden" name = "line1" id="line1" value = "<?php echo $line1; ?>">
+	  <input type = "hidden" name = "line2" id="line2" value = "<?php echo $line2; ?>">
+	  <input type = "hidden" name = "city" id="city" value = "<?php echo $city; ?>">
+	  <input type = "hidden" name = "postcode" id="postcode" value = "<?php echo $postcode; ?>">
+	  <input type = "hidden" name = "phoneNo" id="phoneNo" value = "<?php echo $phoneNo; ?>">
+	  <input type = "hidden" name = "email" id="email" value = "<?php echo $email; ?>">
+	  <input type = "hidden" name = "dofb" id="dofb" value = "<?php echo $dofb; ?>">
+	  <input type = "hidden" name = "contactType" id="contactType" value = "<?php echo $cType; ?>">
+	  <input type = "hidden" name = "contactName" id="contactName" value = "<?php echo $cName; ?>">
+	  <input type = "hidden" name = "relationship" id="contactRel" value = "<?php echo $relationship; ?>">
     </div>
   </div>
-</form>
+  </form>
 </div>
 </main>
 </body>

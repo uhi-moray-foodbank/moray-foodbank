@@ -325,3 +325,37 @@ main {
 .volunteer-details th, td {
   padding: 5px 10px;
 }
+
+.archived-row {
+  background-color: #2699FB;
+  color: #FFF;
+}
+
+.archived-row a {
+  color: #FFF;
+}
+
+.day-circle {
+  width: 45px;
+  height: 25px;
+  border-radius: 30%;
+  font-size: 1em;
+  color: #2699FB;
+  line-height: 25px;
+  text-align: center;
+  background: #FFF;
+  border: 2px solid #2699FB;
+  display: inline-block;
+}
+
+.day-circle-empty {
+  color: #FFF;
+  background: #FFF;
+  border: 2px solid #FFF;
+}
+
+.day-circle-archived {
+  color: #2699FB;
+  background: #2699FB;
+  border: 2px solid #2699FB;
+}

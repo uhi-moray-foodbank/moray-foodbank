@@ -92,7 +92,7 @@ if(isset($_POST['submit'])){
 <main class="container.fluid">
 <div class="container.fluid hero-wrapper">
     <div class="row hero-container">
-        <h1>Testing</h1>
+        <h1>Search Database</h1>
     </div>
 </div>
 

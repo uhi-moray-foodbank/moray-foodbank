@@ -46,14 +46,14 @@ if(isset($_GET['volunteer'])){
 	$record_row = mysqli_fetch_assoc($record_query);
 	
 }else{
-	Header("Location: testall.php");
+	Header("Location: viewall.php");
 }
 ?>
 
 <main class="container.fluid">
 <div class="container.fluid hero-wrapper">
     <div class="row hero-container">
-        <h1>View Volunteer</h1>
+        <h1>Volunteer Details</h1>
     </div>
 </div>
 
@@ -117,19 +117,19 @@ if(isset($_GET['volunteer'])){
 		//Days
 		$days = "";
 		if($days_row['mon'] ==1){
-			$days .= "|Monday|";
+			$days .= "<div class='day-circle'>Mon</div>";
 		}
 		if($days_row['tue'] ==1){
-			$days .= "|Tuesday|";
+			$days .= "<div class='day-circle'>Tue</div>";
 		}
 		if($days_row['wed'] ==1){
-			$days .= "|Wednesday|";
+			$days .= "<div class='day-circle'>Wed</div>";
 		}
 		if($days_row['thu'] ==1){
-			$days .= "|Thursday|";
+			$days .= "<div class='day-circle'>Thu</div>";
 		}
 		if($days_row['fri'] ==1){
-			$days .= "|Friday|";
+			$days .= "<div class='day-circle'>Fri</div>";
 		}
 				
 		echo "<h2> Days Available: </h2>";
@@ -144,38 +144,38 @@ if(isset($_GET['volunteer'])){
 		
 		//Roles
 		$roles = "";
-		if($roles_row['foodbankCentre'] ==1){
-			$roles .= "|Foodbank Centre|";
+		if((isset($roles_row['foodbankCentre'])) && ($roles_row['foodbankCentre'] ==1)){
+			$roles .= "<div class='iconify'>Foodbank Centre</div>";
 		}
-		if($roles_row['promoEvents'] ==1){
-			$roles .= "|Promotional Events|";
+		if((isset($roles_row['promoEvents'])) && ($roles_row['promoEvents'] ==1)){
+			$roles .= "<div class='iconify'>Promotional Events</div>";
 		}
-		if($roles_row['collections'] ==1){
-			$roles .= "|Collections|";
+		if((isset($roles_row['collections'])) && ($roles_row['collections'] ==1)){
+			$roles .= "<div class='iconify'>Collections</div>";
 		}
-		if($roles_row['fundraising'] ==1){
-			$roles .= "|Fundraising|";
+		if((isset($roles_row['fundraising'])) && ($roles_row['fundraising'] ==1)){
+			$roles .= "<div class='iconify'>Fundraising</div>";
 		}
-		if($roles_row['buddyScheme'] ==1){
-			$roles .= "|Buddy Scheme|";
+		if((isset($roles_row['buddyScheme'])) && ($roles_row['buddyScheme'] ==1)){
+			$roles .= "<div class='iconify'>Buddy Scheme</div>";
 		}
-		if($roles_row['delivery'] ==1){
-			$roles .= "|Delivery|";
+		if((isset($roles_row['delivery'])) && ($roles_row['delivery'] ==1)){
+			$roles .= "<div class='iconify'>Delivery</div>";
 		}
-		if($roles_row['Drivers'] ==1){
-			$roles .= "|Drivers|";
+		if((isset($roles_row['Drivers'])) && ($roles_row['Drivers'] ==1)){
+			$roles .= "<div class='iconify'>Drivers</div>";
 		}
-		if($roles_row['cooking'] ==1){
-			$roles .= "|Cooking|";
+		if((isset($roles_row['cooking'])) && ($roles_row['cooking'] ==1)){
+			$roles .= "<div class='iconify'>Cooking</div>";
 		}
-		if($roles_row['store'] ==1){
-			$roles .= "|Store|";
+		if((isset($roles_row['store'])) && ($roles_row['store'] ==1)){
+			$roles .= "<div class='iconify'>Store</div>";
 		}
-		if($roles_row['adhoc'] ==1){
-			$roles .= "|Adhoc|";
+		if((isset($roles_row['adhoc'])) && ($roles_row['adhoc'] ==1)){
+			$roles .= "<div class='iconify'>Adhoc</div>";
 		}
-		if($roles_row['external'] ==1){
-			$roles .= "|External|";
+		if((isset($roles_row['external'])) && ($roles_row['external'] ==1)){
+			$roles .= "<div class='iconify'>External</div>";
 		}
 		
 		echo "<h2> Roles: </h2>";
@@ -184,43 +184,43 @@ if(isset($_GET['volunteer'])){
 		
 		//Target Groups
 		$target = "";
-		if($target_row['lowIncome'] ==1){
+		if((isset($target_row['lowIncome'])) && ($target_row['lowIncome'] ==1)){
 			$target .= "|Low Income|";
 		}
-		if($target_row['mentalHealth'] ==1){
+		if((isset($target_row['mentalHealth'])) && ($target_row['mentalHealth'] ==1)){
 			$target .= "|Mental Health|";
 		}
-		if($target_row['disabilityPhysical'] ==1){
+		if((isset($target_row['disabilityPhysical'])) && ($target_row['disabilityPhysical'] ==1)){
 			$target .= "|Physical Disability|";
 		}
-		if($target_row['chronicCondition'] ==1){
+		if((isset($target_row['chronicCondition'])) && ($target_row['chronicCondition'] ==1)){
 			$target .= "|Chronic Condition|";
 		}
-		if($target_row['carers'] ==1){
+		if((isset($target_row['carers'])) && ($target_row['carers'] ==1)){
 			$target .= "|Carer|";
 		}
-		if($target_row['abused'] ==1){
+		if((isset($target_row['abused'])) && ($target_row['abused'] ==1)){
 			$target .= "|Abused|";
 		}
-		if($target_row['lgbti'] ==1){
+		if((isset($target_row['lgbti'])) && ($target_row['lgbti'] ==1)){
 			$target .= "|LGBTI|";
 		}
-		if($target_row['offenders'] ==1){
+		if((isset($target_row['offenders'])) && ($target_row['offenders'] ==1)){
 			$target .= "|Offender|";
 		}
-		if($target_row['youngRisk'] ==1){
+		if((isset($target_row['youngRisk'])) && ($target_row['youngRisk'] ==1)){
 			$target .= "|Young Risk|";
 		}
-		if($target_row['homeless'] ==1){
+		if((isset($target_row['homeless'])) && ($target_row['homeless'] ==1)){
 			$target .= "|Homeless|";
 		}
-		if($target_row['addiction'] ==1){
+		if((isset($target_row['addiction'])) && ($target_row['addiction'] ==1)){
 			$target .= "|Addiction|";
 		}
-		if($target_row['singleParent'] ==1){
+		if((isset($target_row['singleParent'])) && ($target_row['singleParent'] ==1)){
 			$target .= "|Single Parent|";
 		}
-		if($target_row['ethnicMinority'] ==1){
+		if((isset($target_row['ethnicMinority'])) && ($target_row['ethnicMinority'] ==1)){
 			$target .= "|Ethnic Minority|";
 		}
 		
@@ -233,7 +233,7 @@ if(isset($_GET['volunteer'])){
 		echo "<h2>Health Issues: </h2>";
 		echo "<p>".$record_row['healthIssues']."</p>";
 		
-		echo "<h2>PD Request: </h2>";
+		echo "<h2>Personal Development Request: </h2>";
 		echo "<p>".$record_row['pdRequest']."</p>";
 		
 		echo "<h2>Other Information: </h2>";

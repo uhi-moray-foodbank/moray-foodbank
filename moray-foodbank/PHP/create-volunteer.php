@@ -86,8 +86,6 @@ $sql .= "'" . $_SESSION['hsSigned'] . "');";
 
 $result = mysqli_query($connection, $sql);
 
-
-
 //Roles table
 $sql = "INSERT INTO roles (id, foodbankCentre, promoEvents, collections, fundraising, buddyScheme, delivery, drivers, cooking, store, adhoc, external) VALUES (";
 $sql .= "'" . $id . "', ";
@@ -97,31 +95,18 @@ $sql .= "'" . $_SESSION['collections'] . "', ";
 $sql .= "'" . $_SESSION['fundraising'] . "', ";
 $sql .= "'" . $_SESSION['buddyScheme'] . "', ";
 $sql .= "'" . $_SESSION['delivery'] . "', ";
-$sql .= "'" . $_SESSION['divers'] . "', ";
+$sql .= "'" . $_SESSION['drivers'] . "', ";
 $sql .= "'" . $_SESSION['cooking'] . "', ";
 $sql .= "'" . $_SESSION['store'] . "', ";
 $sql .= "'" . $_SESSION['adhoc'] . "', ";
 $sql .= "'" . $_SESSION['external'] . "');";
 
+	
 $result = mysqli_query($connection, $sql);
-
 //Target groups table
-$sql = "INSERT INTO targetGroups (id, lowIncome, mentalHealth, disabilityPhysical, disabilityMental, chronicCondition, carers, abused, lgbti, offenders, youngRisk, homeless, addiction, singleParent, ethnicMinority) VALUES (";
+$sql = "INSERT INTO targetGroups (id, groups) VALUES (";
 $sql .= "'" . $id . "', ";
-$sql .= "'" . $_SESSION['lowIncome'] . "', ";
-$sql .= "'" . $_SESSION['mentalHealth'] . "', ";
-$sql .= "'" . $_SESSION['disabilityPhysical'] . "', ";
-$sql .= "'" . $_SESSION['disabilityMental'] . "', ";
-$sql .= "'" . $_SESSION['chronicCondition'] . "', ";
-$sql .= "'" . $_SESSION['carers'] . "', ";
-$sql .= "'" . $_SESSION['abused'] . "', ";
-$sql .= "'" . $_SESSION['lgbti'] . "', ";
-$sql .= "'" . $_SESSION['offenders'] . "', ";
-$sql .= "'" . $_SESSION['youngRisk'] . "', ";
-$sql .= "'" . $_SESSION['homeless'] . "', ";
-$sql .= "'" . $_SESSION['addiction'] . "', ";
-$sql .= "'" . $_SESSION['singleParent'] . "', ";
-$sql .= "'" . $_SESSION['ethnicMinority'] . "');";
+$sql .= "'" . $_SESSION['targetGroup'] . "');";
 
 $result = mysqli_query($connection, $sql);
 

@@ -3,12 +3,12 @@ $title = "Search Database";
 include("header.php");
 
 //The basic query for if no inputs are given to the search bar or checkboxes
-$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t WHERE v.id = d.id AND v.id = t.id";
+$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id=r.id";
 	
 
 //Appends functionality to the end of the query based on what the user inputs
 if(isset($_POST['submit'])){
-	$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t WHERE v.id = d.id AND v.id = t.id";
+	$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id = r.id";
 	
 	//Checks if anyone has a name similar or matching the one inputted
 	if(isset($_POST['surname'])){
@@ -20,37 +20,37 @@ if(isset($_POST['submit'])){
 	
 	if(isset($_POST['forename'])){
 		$forename = $_POST['forename'];
-		$sql .=  " AND fname LIKE '%".$forename."%'";		
+		$sql .=  " AND fname LIKE '%".$forename."%'";
 		$_SESSION['search_for'] = $forename;
 	}
 	
 	//Checks if user wants specified days to be available
 	if(isset($_POST['monday'])){
-		$sql .= "AND mon='1' ";
+		$sql .= " AND mon='1' ";
 		$_SESSION['search_mon'] = 1;
 	} else if (empty($_POST['monday'])){
 		$_SESSION['search_mon'] = 0;
 	}
 	if(isset($_POST['tuesday'])){
-		$sql .= "AND tue='1' ";
+		$sql .= " AND tue='1' ";
 		$_SESSION['search_tue'] = 1;
 	} else if (empty($_POST['tuesday'])){
 		$_SESSION['search_tue'] = 0;
 	}	
 	if(isset($_POST['wednesday'])){
-		$sql .= "AND wed='1' ";
+		$sql .= " AND wed='1' ";
 		$_SESSION['search_wed'] = 1;
 	} else if (empty($_POST['wednesday'])){
 		$_SESSION['search_wed'] = 0;
 	}
 	if(isset($_POST['thursday'])){
-		$sql .= "AND thu='1' ";
+		$sql .= " AND thu='1' ";
 		$_SESSION['search_thu'] = 1;
 	} else if (empty($_POST['thursday'])){
 		$_SESSION['search_thu'] = 0;
 	}
 	if(isset($_POST['friday'])){
-		$sql .= "AND fri='1' ";
+		$sql .= " AND fri='1' ";
 		$_SESSION['search_fri'] = 1;
 	} else if (empty($_POST['friday'])){
 		$_SESSION['search_fri'] = 0;
@@ -63,12 +63,27 @@ if(isset($_POST['submit'])){
 		$_SESSION['search_target'] = 0;
 	}
 	
+	if(isset($_POST['checkRoles'])){
+		$role = $_POST['roles'];
+		$_SESSION['search_rolecheck'] = 1;
+		$_SESSION['search_role'] = $role;
+		
+		$sql .= " AND ".$role." = 1 ";
+	}else{
+		$_SESSION['search_rolecheck'] = 0;
+		unset($_SESSION['search_role']);
+	}
+	
+	
 	//Checks if user wants to see archived people as well
 	if(isset($_POST['archived'])){
 		$_SESSION['search_archive'] = 1;
 	}else{
-		$sql .= "AND archived IS NULL";
+		$sql .= " AND archived IS NULL";
+		$_SESSION['search_archive'] = 0;
 	}
+	
+	
 	
 }else if(isset($_POST['clear'])){
 	//Remove all sessions and refresh page
@@ -81,6 +96,8 @@ if(isset($_POST['submit'])){
 	unset($_SESSION['search_sur']);
 	unset($_SESSION['search_for']);
 	unset($_SESSION['search_target']);
+	unset($_SESSION['search_rolecheck']);
+	unset($_SESSION['search_role']);
 }
 
 //Close the sql statement and run the query
@@ -133,7 +150,26 @@ if(isset($_POST['submit'])){
 			<label class="form-check-label" for="friday">Fri</label>
 		</div>
 	</div>
-
+	
+	<label >Role:</label>
+	<select name="roles">
+		<option value="foodbankCentre" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="foodbankCentre"){echo "selected";}?> >Foodbank Centre</option>
+		<option value="promoEvents" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="promoEvents"){echo "selected";}?> >Promotional Events</option>
+		<option value="collections" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="collections"){echo "selected";}?>>Supermarket Collections</option>
+		<option value="fundraising" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="fundraising"){echo "selected";}?>>Fundraising</option>
+		<option value="buddyScheme" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="buddyScheme"){echo "selected";}?> >Buddy Scheme</option>
+		<option value="delivery" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="delivery"){echo "selected";}?> >Delivery</option>
+		<option value="drivers" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="drivers"){echo "selected";}?> > Drivers</option>
+		<option value="cooking" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="cooking"){echo "selected";}?> >Cooking</option>
+		<option value="store" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="store"){echo "selected";}?> >Store</option>
+		<option value="adhoc" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="adhoc"){echo "selected";}?> >Adhoc</option>
+		<option value="external" <?php if((isset($_SESSION['search_role'])) && $_SESSION['search_role']=="external"){echo "selected";}?> >External</option>
+	</select>
+	
+	<input type = "checkbox" value = "1" name = "checkRoles" id = "checkRoles" <?php if(isset($_SESSION['search_rolecheck']) && $_SESSION['search_rolecheck']==1){echo "checked";} ?>> 
+	<label>Search for this role?</label>
+	
+	
 	<div class="form-row">
 		<div class="form-group col-md-3 form-buttons">
 			<input type="submit" name="submit" id="submit" class="btn btn-primary" value="Search">
@@ -182,6 +218,12 @@ if(isset($_POST['submit'])){
 			$thu = $row['thu'];
 			$fri = $row['fri'];
 			$saltire = $row['saltire'];
+			
+			if($saltire==1){
+				$saltire="Yes";
+			}else{
+				$saltire="No";
+			}
 			
 			if(isset($_POST['targets'])){
 				$target = $row['groups'];

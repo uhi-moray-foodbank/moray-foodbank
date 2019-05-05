@@ -7,29 +7,29 @@ $errorFName = false;
 $errorLName = false;
 
 if(isset($_POST['submit'])){
-  $_SESSION['title'] = $_POST['title'];
-  $_SESSION['fname'] = $_POST['firstname'];
-  $_SESSION['lname'] = $_POST['lname'];
-  $_SESSION['email'] = $_POST['email'];
-  $_SESSION['line1'] = $_POST['line1'];
-  $_SESSION['line2'] = $_POST['line2'];
-  $_SESSION['city'] = $_POST['address3'];
-  $_SESSION['postcode'] = $_POST['postcode'];
-  $_SESSION['phone'] = $_POST['phoneNo'];
-  $_SESSION['dofb'] = $_POST['dofb'];
-  
-  $_SESSION['cType'] = $_POST['contactType'];
-  $_SESSION['cName'] = $_POST['contactName'];
-  $_SESSION['cPhone'] = $_POST['contactPhone'];
-  $_SESSION['relationship'] = $_POST['contactRel'];
+	$_SESSION['title'] = $_POST['title'];
+	$_SESSION['fname'] = $_POST['firstname'];
+	$_SESSION['lname'] = $_POST['lname'];
+	$_SESSION['email'] = $_POST['email'];
+	$_SESSION['line1'] = $_POST['line1'];
+	$_SESSION['line2'] = $_POST['line2'];
+	$_SESSION['city'] = $_POST['address3'];
+	$_SESSION['postcode'] = $_POST['postcode'];
+	$_SESSION['phone'] = $_POST['phoneNo'];
+	$_SESSION['dofb'] = $_POST['dofb'];
+	
+	$_SESSION['cType'] = $_POST['contactType'];
+	$_SESSION['cName'] = $_POST['contactName'];
+	$_SESSION['cPhone'] = $_POST['contactPhone'];
+	$_SESSION['relationship'] = $_POST['contactRel'];
 
-  if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])) {	
+	if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])) {
 		header("Location: register-b.php");
 	} else {
-    if(empty($_POST['title'])) $errorTitle = true;
-    if(empty($_POST['firstname'])) $errorFName = true;
-    if(empty($_POST['lname'])) $errorLName = true;
-  }
+		if(empty($_POST['title'])) $errorTitle = true;
+		if(empty($_POST['firstname'])) $errorFName = true;
+		if(empty($_POST['lname'])) $errorLName = true;
+	}
 }
 
 if(isset($_POST['cancel'])){

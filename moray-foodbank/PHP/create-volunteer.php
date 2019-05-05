@@ -86,8 +86,6 @@ $sql .= "'" . $_SESSION['hsSigned'] . "');";
 
 $result = mysqli_query($connection, $sql);
 
-
-
 //Roles table
 $sql = "INSERT INTO roles (id, foodbankCentre, promoEvents, collections, fundraising, buddyScheme, delivery, drivers, cooking, store, adhoc, external) VALUES (";
 $sql .= "'" . $id . "', ";
@@ -103,7 +101,7 @@ $sql .= "'" . $_SESSION['store'] . "', ";
 $sql .= "'" . $_SESSION['adhoc'] . "', ";
 $sql .= "'" . $_SESSION['external'] . "');";
 
-	echo $sql;
+	
 $result = mysqli_query($connection, $sql);
 //Target groups table
 $sql = "INSERT INTO targetGroups (id, groups) VALUES (";
@@ -118,5 +116,5 @@ session_unset();
 
 $_SESSION['Username'] = $tempUsername;
 
-//header("location: home.php");
+header("location: home.php");
 ?>

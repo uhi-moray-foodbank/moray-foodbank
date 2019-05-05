@@ -133,7 +133,11 @@ if(isset($_GET['volunteer'])){
 		}
 				
 		echo "<h2> Days Available: </h2>";
-		echo "<p>".$days."</p>";
+		if($days==""){
+			echo "<p>No Free Days</p>";
+		}else{
+			echo "<p>".$days."</p>";
+		}
 		
 		echo "<br>";
 		
@@ -162,7 +166,7 @@ if(isset($_GET['volunteer'])){
 		if((isset($roles_row['delivery'])) && ($roles_row['delivery'] ==1)){
 			$roles .= "<div class='iconify'>Delivery</div>";
 		}
-		if((isset($roles_row['Drivers'])) && ($roles_row['Drivers'] ==1)){
+		if((isset($roles_row['drivers'])) && ($roles_row['drivers'] ==1)){
 			$roles .= "<div class='iconify'>Drivers</div>";
 		}
 		if((isset($roles_row['cooking'])) && ($roles_row['cooking'] ==1)){
@@ -180,64 +184,29 @@ if(isset($_GET['volunteer'])){
 		
 		echo "<h2> Roles: </h2>";
 		echo "<p>".$roles."</p>";
-		echo "<br>";
+		echo "<br>";	
 		
-		//Target Groups
-		$target = "";
-		if((isset($target_row['lowIncome'])) && ($target_row['lowIncome'] ==1)){
-			$target .= "|Low Income|";
+		if(isset($target_row['groups']) && $target_row['groups']!=null){
+			echo "<h2> Target Group: ".$target_row['groups']."</h2>";
 		}
-		if((isset($target_row['mentalHealth'])) && ($target_row['mentalHealth'] ==1)){
-			$target .= "|Mental Health|";
-		}
-		if((isset($target_row['disabilityPhysical'])) && ($target_row['disabilityPhysical'] ==1)){
-			$target .= "|Physical Disability|";
-		}
-		if((isset($target_row['chronicCondition'])) && ($target_row['chronicCondition'] ==1)){
-			$target .= "|Chronic Condition|";
-		}
-		if((isset($target_row['carers'])) && ($target_row['carers'] ==1)){
-			$target .= "|Carer|";
-		}
-		if((isset($target_row['abused'])) && ($target_row['abused'] ==1)){
-			$target .= "|Abused|";
-		}
-		if((isset($target_row['lgbti'])) && ($target_row['lgbti'] ==1)){
-			$target .= "|LGBTI|";
-		}
-		if((isset($target_row['offenders'])) && ($target_row['offenders'] ==1)){
-			$target .= "|Offender|";
-		}
-		if((isset($target_row['youngRisk'])) && ($target_row['youngRisk'] ==1)){
-			$target .= "|Young Risk|";
-		}
-		if((isset($target_row['homeless'])) && ($target_row['homeless'] ==1)){
-			$target .= "|Homeless|";
-		}
-		if((isset($target_row['addiction'])) && ($target_row['addiction'] ==1)){
-			$target .= "|Addiction|";
-		}
-		if((isset($target_row['singleParent'])) && ($target_row['singleParent'] ==1)){
-			$target .= "|Single Parent|";
-		}
-		if((isset($target_row['ethnicMinority'])) && ($target_row['ethnicMinority'] ==1)){
-			$target .= "|Ethnic Minority|";
-		}
-		
-		echo "<h2> Target Groups: </h2>";
-		echo "<p>".$target."</p>";
-		
+
 		echo "<br>";
 		
 		//Record Card
-		echo "<h2>Health Issues: </h2>";
-		echo "<p>".$record_row['healthIssues']."</p>";
+		if(isset($record_row['healthIssues']) && $record_row['healthIssues']!=""){
+			echo "<h2>Health Issues: </h2>";
+			echo "<p>".$record_row['healthIssues']."</p>";
+		}
 		
-		echo "<h2>Personal Development Request: </h2>";
-		echo "<p>".$record_row['pdRequest']."</p>";
+		if(isset($record_row['pdRequest']) && $record_row['pdRequest'] != ""){
+			echo "<h2>Personal Development Request: </h2>";
+			echo "<p>".$record_row['pdRequest']."</p>";
+		}
 		
-		echo "<h2>Other Information: </h2>";
-		echo "<p>".$record_row['otherInfo']."</p>";
+		if(isset($record_row['otherInfo']) && $record_row['otherInfo'] != ""){
+			echo "<h2>Other Information: </h2>";
+			echo "<p>".$record_row['otherInfo']."</p>";
+		}
 		
 		echo "<h2>PVG Check: </h2>";
 		echo "<p>".$record_row['pvg']."</p>";
@@ -246,21 +215,22 @@ if(isset($_GET['volunteer'])){
 		$hsSigned = $record_row['hsSigned'];
 
 		
-		echo "<h2>Confidentiality Agreement Signed: </h2>";
+		echo "<h2>Confidentiality Agreement Signed: ";
 		if($confAgree = 1){
-			echo "<p>Yes</p>";
+			echo "Yes";
 		}else{
-			echo "<p>No</p>";
+			echo "No";
 		}
-		echo "<h2>H&S checklist complete: </h2>";
+		echo "</h2>";
+		
+		echo "<h2>H&S checklist complete: ";
 		if($hsSigned = 1){
-			echo "<p>Yes</p>";
+			echo "Yes";
 		}else{
-			echo "<p>No</p>";
+			echo "No";
 		}
-		
-		
-		
+		echo "</h2>";
+
 		
 	?>
 

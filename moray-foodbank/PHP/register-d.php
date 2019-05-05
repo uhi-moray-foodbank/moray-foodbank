@@ -3,27 +3,30 @@ $title = "Registration - Step Four";
 include("header.php");
 
 if(isset($_POST['submit']) || isset($_POST['back'])){
+	
+	if(isset($_POST['targetGroup'])){
+		$_SESSION['targetGroup'] = $_POST['targetGroup'];
+	}else{
+		$_SESSION['targetGroup'] = null;
+	}
+	
+	$_SESSION['healthIssues'] = $_POST['healthIssues'];
+  
+	$_SESSION['pdRequest'] = $_POST['pdRequest'];
+	$_SESSION['otherInfo'] = $_POST['otherInfo'];
+	$_SESSION['pvg'] = $_POST['pvg'];
 
-  if(!empty($_POST['targetGroup'] && $_POST['targetGroup']!="")){$_SESSION['targetGroup'] = $_POST['targetGroup'];}
-  else {$_SESSION['targetGroup'] = null;}
+	if(!empty($_POST['confAgree'])) $_SESSION['confAgree'] = $_POST['confAgree'];
+	else $_SESSION['confAgree'] = "0";
   
-  $_SESSION['healthIssues'] = $_POST['healthIssues'];
-  
-  $_SESSION['pdRequest'] = $_POST['pdRequest'];
-  $_SESSION['otherInfo'] = $_POST['otherInfo'];
-  $_SESSION['pvg'] = $_POST['pvg'];
-
-  if(!empty($_POST['confAgree'])) $_SESSION['confAgree'] = $_POST['confAgree'];
-  else $_SESSION['confAgree'] = "0";
-  
-  if(!empty($_POST['hsSigned'])) $_SESSION['hsSigned'] = $_POST['hsSigned'];
-  else $_SESSION['hsSigned'] = "0";
+	if(!empty($_POST['hsSigned'])) $_SESSION['hsSigned'] = $_POST['hsSigned'];
+	else $_SESSION['hsSigned'] = "0";
 
   //Navigation buttons
-  if(isset($_POST['submit']))
-    header("Location: create-volunteer.php");
-  if(isset($_POST['back']))
-    header("Location: register-c.php");
+	if(isset($_POST['submit']))
+		header("Location: create-volunteer.php");
+	if(isset($_POST['back']))
+		header("Location: register-c.php");
 }
 ?>
 
@@ -187,11 +190,8 @@ if(isset($_POST['submit']) || isset($_POST['back'])){
     <div class="form-group col-md-6">
       <label for="pvg">PVG</label>
       <select class="form-control" id="pvg" name="pvg">
-		    <option value="Cannot check">Can't check</option> <!-- TODO: Change "Can't change" to "Cannot change" in database. -->
-        <option value="Can check" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Can check"){echo "selected";}?>>Can Check</option>
-        <option value="Incoming" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Incoming"){echo "selected";}?>>Incoming</option>
-        <option value="Passed" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Passed"){echo "selected";}?>>Passed</option>
-        <option value="Failed" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Failed"){echo "selected";}?>>Failed</option>
+        <option value="Received" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Received"){echo "selected";}?>>Received</option>
+        <option value="Not Required" <?php if((isset($_SESSION['pvg'])) && $_SESSION['pvg']=="Not Required"){echo "selected";}?>>Not Required</option>
       </select>
     </div>
   </div>

@@ -1,9 +1,15 @@
 <?php
 include("header.php");
 
+$errorTitle = false;
+$errorFName = false;
+$errorLName = false;
+
 $tempUsername = $_SESSION['Username'];
 
 $_SESSION['id'] = $_POST['id'];
+
+$currentDate = date('Y')."-".date('m')."-".date('d');
 
 //Get the volunteer's id to use in other queries
 $query = mysqli_query($connection, "SELECT * FROM volunteer WHERE id='".$_SESSION['id']."';");
@@ -40,18 +46,41 @@ $sql .= "line2 = '" . $line2 . "', city = '" . $city . "', postcode = '" . $post
 $sql .= "phoneNo = '" . $phone . "', email = '" . $email . "', dofb = '" . $dofb . "' ";
 $sql .= "WHERE id = '" . $id . "';";
 
-$result = mysqli_query($connection, $sql);
- echo $sql;
+
+ //echo $sql;
 
 //Update contact table with new values
 $sql2 = "UPDATE contact SET cType = '" . $cType . "', cName = '" . $cName . "', phoneNo = '" . $cPhone . "', relationship = '" . $relationship . "' ";
 $sql2 .= "WHERE id = '" . $id . "';";
 
-$result2 = mysqli_query($connection, $sql2);
+$sql3 = "UPDATE volunteer SET archived = '" . $current_date . "' ";
+$sql3 .= "WHERE id = '" . $id . "';";
 
-header("Location: home.php");
+if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])) {	
+		$result = mysqli_query($connection, $sql);
+		$result2 = mysqli_query($connection, $sql2);
+		header("Location: home.php");
+	} else {
+    if(empty($_POST['title'])) $errorTitle = true;
+    if(empty($_POST['firstname'])) $errorFName = true;
+    if(empty($_POST['lname'])) $errorLName = true;
+
+//header("Location: home.php");
+}
 }
 
+if(isset($_POST['Archive'])){
+	if(!empty($_POST['title']) && !empty($_POST['firstname']) && !empty($_POST['lname'])) {	
+		$sql3 = "UPDATE volunteer SET archived = '" . $currentDate . "' ";
+		$sql3 .= "WHERE id = '" . $id . "';";
+		$result3 = mysqli_query($connection, $sql3);
+		header("Location: home.php");
+	} else {
+		if(empty($_POST['title'])) $errorTitle = true;
+		if(empty($_POST['firstname'])) $errorFName = true;
+		if(empty($_POST['lname'])) $errorLName = true;
+}
+}
 $row = mysqli_fetch_assoc($query);
 $id = $row['id'];
 
@@ -157,6 +186,13 @@ $row2 = mysqli_fetch_assoc($query2);
 		<!--<button type="submit" class="btn btn-primary">Next</button>-->
 		<input type = "hidden" name = "id" id="id" value = "<?php echo $id; ?>">
 		<input type ="submit" name="Submit" class ="btn btn-primary" value="Edit Volunteer Details">
+    </div>
+	<div class="form-group col-md-6 offset-md-3 form-buttons">
+		<!--<button type="submit" class="btn btn-primary disabled">Back</button>-->
+		<!--<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">-->
+		<!--<button type="submit" class="btn btn-primary">Next</button>-->
+		<input type = "hidden" name = "id" id="id" value = "<?php echo $id; ?>">
+		<input type ="submit" name="Archive" class ="btn btn-primary" value="Archive Volunteer">
     </div>
   </div>
 </form>

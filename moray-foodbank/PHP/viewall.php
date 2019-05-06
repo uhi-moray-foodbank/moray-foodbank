@@ -3,7 +3,7 @@ $title = "Search Database";
 include("header.php");
 
 //The basic query for if no inputs are given to the search bar or checkboxes
-$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id=r.id";
+$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id=r.id AND archived IS NULL";
 	
 
 //Appends functionality to the end of the query based on what the user inputs

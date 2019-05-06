@@ -4,10 +4,10 @@ include("header.php");
 
 if(isset($_POST['submit']) || isset($_POST['back'])){
 	
-	if(isset($_POST['targetGroup'])){
-		$_SESSION['targetGroup'] = $_POST['targetGroup'];
-	}else{
+	if($_POST['targetGroup'] = "none"){
 		$_SESSION['targetGroup'] = null;
+	}else{
+		$_SESSION['targetGroup'] = $_POST['targetGroup'];
 	}
 	
 	$_SESSION['healthIssues'] = $_POST['healthIssues'];
@@ -75,6 +75,12 @@ if(isset($_POST['submit']) || isset($_POST['back'])){
     </div>
   </div>
   <div class="form-row">
+	<div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="none" name="targetGroup" id="targetGroup" checked>
+      <label class="form-check-label" for="disabilityLearning">
+        None
+      </label>
+    </div>
     <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="disabilityLearning" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "disabilityLearning"){echo "checked";} ?>>
       <label class="form-check-label" for="disabilityLearning">

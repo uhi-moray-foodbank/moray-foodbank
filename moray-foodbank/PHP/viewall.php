@@ -13,7 +13,6 @@ if(isset($_POST['submit'])){
 	//Checks if anyone has a name similar or matching the one inputted
 	if(isset($_POST['surname'])){
 		$surname = $_POST['surname'];
-		//echo $surname;
 		$sql .=  " AND lname LIKE '%".$surname."%'";		
 		$_SESSION['search_sur'] = $surname;
 	}

@@ -255,6 +255,9 @@ if(isset($_GET['volunteer'])){
     </div>
   </div>
   </form>
+	<!--TODO: move to the right position, currently just loads at foot of the page.-->
+	<?php include 'hours.php'; ?>
+
 </div>
 </main>
 </body>

@@ -47,20 +47,9 @@ if (!empty($_POST['hours']))
 					<input name='date' type='date' min="2000-01-01" max="3000-12-31" value="<?php echo "20".date("y-m-d")?>";>
 				</td>
 				<td>
-					<select id="hours" name="hours">
-					   <option value = 1>One</option>
-					   <option value = 2>Two</option>
-					   <option value = 3>Three</option>
-					   <option value = 4>Four</option>
-					   <option value = 5>Five</option>
-					   <option value = 6>Six</option>
-					   <option value = 7>Seven</option>
-					   <option value = 8>Eight</option>
-					   <option value = 9>Nine</option>
-					   <option value = 10>Ten</option>
-					   <option value = 11>Eleven</option>
-					   <option value = 12>Twelve</option>
-					</select>
+					<input id="hours" name='hours' type='number' min="0" max="12" value="0";>
+
+					
 				</td>
 				<td>
 					<input type="submit">

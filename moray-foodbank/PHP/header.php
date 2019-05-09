@@ -55,7 +55,7 @@ if(!isset($_SESSION['Username'])){
 
                 <!-- LOGO -->
                 <div class="col-4 header-logo">
-                    <a href="home.php"><img class="img-fluid" src="../IMAGES/moray-foodbank-logo.png" alt="Moray Foodbank logo"></a>
+                    <a href="home.php"><img class="img-fluid" src="../IMAGES/logo-large.gif" alt="Moray Foodbank logo"></a>
                 </div>
 
                 <!-- USER MENU -->

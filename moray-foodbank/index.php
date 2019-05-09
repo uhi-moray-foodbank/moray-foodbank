@@ -29,7 +29,7 @@ include("PHP/ADMLoginHash.php");
 	<div class="container header">
 		<div class="row">
 			<div class="col-12 header-logo">
-				<a href="#"><img class="img-fluid" src="IMAGES/moray-foodbank-logo.png" alt="Moray Foodbank logo"></a>
+				<a href="#"><img class="img-fluid" src="IMAGES/logo-large.gif" alt="Moray Foodbank logo"></a>
 			</div>
 		</div>
 	</div>

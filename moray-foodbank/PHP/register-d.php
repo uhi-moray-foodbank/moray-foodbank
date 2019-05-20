@@ -71,46 +71,102 @@ if(isset($_POST['submit']) || isset($_POST['back'])){
 <form class="volunteer-form" action="" method="post">
   <div class="form-row">
     <div class="col-md-12">
-    <label>Any health issues that we should be aware of?</label>
+    <label>TARGET GROUPS (choose only one)</label>
     </div>
   </div>
   <div class="form-row">
-	<div class="form-check form-group col-md-4">
+	  <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="none" name="targetGroup" id="targetGroup" checked>
-      <label class="form-check-label" for="disabilityLearning">
+      <label class="form-check-label" for="none">
         None
       </label>
     </div>
+  </div>
+  <div class="form-row">
     <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="disabilityLearning" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "disabilityLearning"){echo "checked";} ?>>
       <label class="form-check-label" for="disabilityLearning">
-        Learning Disability
+        People with a learning disability
       </label>
     </div>
     <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="mentalHealth" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "mentalHealth"){echo "checked";} ?>>
       <label class="form-check-label" for="mentalHealth">
-        Mental Health
+        People with mental health conditions
       </label>
     </div>
     <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="disabilityPhysical" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "disabilityPhysical"){echo "checked";} ?>>
       <label class="form-check-label" for="disabilityPhysical">
-        Physical Disability
+        People with a physical disability
       </label>
     </div>
   </div>
   <div class="form-row">
-    <div class="form-check form-group col-md-4">
+    <div class="form-check form-group col-md-8">
       <input class="form-check-input" type="radio" value="chronicCondition" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "chronicCondition"){echo "checked";} ?>>
       <label class="form-check-label" for="chronicCondition">
-        Chronic condition
+        People with a long-standing illness, disease or chronic condition
       </label>
     </div>
     <div class="form-check form-group col-md-4">
       <input class="form-check-input" type="radio" value="addiction" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "addiction"){echo "checked";} ?>>
       <label class="form-check-label" for="addiction">
-        Addiction
+        People affected by addictions
+      </label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="abused" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "abused"){echo "checked";} ?>>
+      <label class="form-check-label" for="abused">
+        People affected by abuse
+      </label>
+    </div>
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="lgbti" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "lgbti"){echo "checked";} ?>>
+      <label class="form-check-label" for="lgbti">
+        LGBTI
+      </label>
+    </div>
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="offenders" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "offenders"){echo "checked";} ?>>
+      <label class="form-check-label" for="offenders">
+        Offenders / Ex-offenders
+      </label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="youngRisk" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "youngRisk"){echo "checked";} ?>>
+      <label class="form-check-label" for="youngRisk">
+        Young people at risk of offending
+      </label>
+    </div>
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="homeless" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "homeless"){echo "checked";} ?>>
+      <label class="form-check-label" for="homeless">
+        People affected by homelessness
+      </label>
+    </div>
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="lowIncome" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "lowIncome"){echo "checked";} ?>>
+      <label class="form-check-label" for="lowIncome">
+        People on low incomes
+      </label>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="singleParent" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "singleParent"){echo "checked";} ?>>
+      <label class="form-check-label" for="singleParent">
+        Single parents
+      </label>
+    </div>
+    <div class="form-check form-group col-md-4">
+      <input class="form-check-input" type="radio" value="ethnicMinority" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['ethnicMinority']) && $_SESSION['targetGroup'] == "ethnicMinority"){echo "checked";} ?>>
+      <label class="form-check-label" for="ethnicMinority">
+        People from BME communities
       </label>
     </div>
     <div class="form-check form-group col-md-4">
@@ -124,60 +180,6 @@ if(isset($_POST['submit']) || isset($_POST['back'])){
     <div class="form-group col-md-12">
       <label for="healthIssues">Details (including medication)</label>
       <textarea class="form-control" name="healthIssues" id="healthIssues" rows="3"><?php if(isset($_SESSION['targetGroup'])){echo $_SESSION['targetGroup'];} ?></textarea>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="abused" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "abused"){echo "checked";} ?>>
-      <label class="form-check-label" for="abused">
-        Abused
-      </label>
-    </div>
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="lgbti" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "lgbti"){echo "checked";} ?>>
-      <label class="form-check-label" for="lgbti">
-        LGBTI
-      </label>
-    </div>
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="offenders" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "offenders"){echo "checked";} ?>>
-      <label class="form-check-label" for="offenders">
-        Offenders
-      </label>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="youngRisk" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "youngRisk"){echo "checked";} ?>>
-      <label class="form-check-label" for="youngRisk">
-        Young Risk?
-      </label>
-    </div>
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="homeless" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "homeless"){echo "checked";} ?>>
-      <label class="form-check-label" for="homeless">
-        Homeless
-      </label>
-    </div>
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="lowIncome" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "lowIncome"){echo "checked";} ?>>
-      <label class="form-check-label" for="lowIncome">
-        Low Income
-      </label>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-check form-group col-md-4">
-      <input class="form-check-input" type="radio" value="singleParent" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['targetGroup']) && $_SESSION['targetGroup'] == "singleParent"){echo "checked";} ?>>
-      <label class="form-check-label" for="singleParent">
-        Single Parent
-      </label>
-    </div>
-    <div class="form-check form-group col-md-8">
-      <input class="form-check-input" type="radio" value="ethnicMinority" name="targetGroup" id="targetGroup" <?php if(isset($_SESSION['ethnicMinority']) && $_SESSION['targetGroup'] == "ethnicMinority"){echo "checked";} ?>>
-      <label class="form-check-label" for="ethnicMinority">
-        Ethnic Minority
-      </label>
     </div>
   </div>
   <div class="form-row">

@@ -187,7 +187,36 @@ if(isset($_GET['volunteer'])){
 		echo "<br>";	
 		
 		if(isset($target_row['groups']) && $target_row['groups']!=null){
-			echo "<h2> Target Group: ".$target_row['groups']."</h2>";
+			if($target_row['groups'] == "disabilityLearning")
+			{ echo "<h2> Target Group: People with a learning disability</h2>"; }
+			else if($target_row['groups'] == "mentalHealth") 
+			{	echo "<h2> Target Group: People with mental health conditions</h2>"; }
+			else if($target_row['groups'] == "disabilityPhysical") 
+			{	echo "<h2> Target Group: People with a physical disability</h2>"; } 
+			else if($target_row['groups'] == "chronicCondition") 
+			{	echo "<h2> Target Group: People with a long-standing illness, disease or chronic condition</h2>"; } 
+			else if($target_row['groups'] == "addiction") 
+			{	echo "<h2> Target Group: People affected by addictions</h2>"; }
+			else if($target_row['groups'] == "abused") 
+			{	echo "<h2> Target Group: People affected by abuse</h2>"; } 
+			else if($target_row['groups'] == "lgbti") 
+			{	echo "<h2> Target Group: LGBTI</h2>"; } 
+			else if($target_row['groups'] == "offenders") 
+			{	echo "<h2> Target Group: Offenders / Ex-offenders</h2>"; } 
+			else if($target_row['groups'] == "youngRisk") 
+			{	echo "<h2> Target Group: Young people at risk of offending</h2>"; } 
+			else if($target_row['groups'] == "homeless") 
+			{	echo "<h2> Target Group: People affected by homelessness</h2>"; } 
+			else if($target_row['groups'] == "lowIncome") 
+			{	echo "<h2> Target Group: People on low incomes</h2>"; } 
+			else if($target_row['groups'] == "singleParent") 
+			{	echo "<h2> Target Group: Single parents</h2>"; } 
+			else if($target_row['groups'] == "ethnicMinority") 
+			{	echo "<h2> Target Group: People from BME communities</h2>"; }  
+			else if($target_row['groups'] == "carers") 
+			{	echo "<h2> Target Group: Carers</h2>"; } 
+			else 
+			{ echo "<h2> Target Group: ".$target_row['groups']."</h2>";	}
 		}
 
 		echo "<br>";

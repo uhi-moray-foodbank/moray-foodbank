@@ -33,10 +33,10 @@ if(isset($_POST['Submit'])){
 				$dofb = $_POST['dofb'];
 				
 
-				$_SESSION['cType'] = $_POST['contactType'];
+				/*$_SESSION['cType'] = $_POST['contactType'];
 				$_SESSION['cName'] = $_POST['contactName'];
 				$_SESSION['cphone'] = $_POST['contactPhone'];
-				$_SESSION['relationship'] = $_POST['contactRel'];
+				$_SESSION['relationship'] = $_POST['contactRel'];*/
 
 
 //Update volunteer table with new values
@@ -50,8 +50,8 @@ $sql .= "WHERE id = '" . $id . "';";
  //echo $sql;
 
 //Update contact table with new values
-$sql2 = "UPDATE contact SET cType = '" . $cType . "', cName = '" . $cName . "', phoneNo = '" . $cPhone . "', relationship = '" . $relationship . "' ";
-$sql2 .= "WHERE id = '" . $id . "';";
+/*$sql2 = "UPDATE contact SET cType = '" . $cType . "', cName = '" . $cName . "', phoneNo = '" . $cPhone . "', relationship = '" . $relationship . "' ";
+$sql2 .= "WHERE id = '" . $id . "';";*/
 
 $sql3 = "UPDATE volunteer SET archived = '" . $current_date . "' ";
 $sql3 .= "WHERE id = '" . $id . "';";
@@ -132,7 +132,7 @@ $row2 = mysqli_fetch_assoc($query2);
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="phoneNo">PHONE</label>
-      <input type="text" class="form-control" name="phoneNo" id="phoneNo" placeholder="Phone number" value="<?php echo $row ['phone']; ?>">
+      <input type="text" class="form-control" name="phoneNo" id="phoneNo" placeholder="Phone number" value="<?php echo $row ['phoneNo']; ?>">
     </div>
     <div class="form-group col-md-6">
       <label for="line2">ADDRESS LINE 2</label>
@@ -156,7 +156,7 @@ $row2 = mysqli_fetch_assoc($query2);
     </div>
   </div>
   <br>
-  <label>EMERGENCY CONTACT</label>
+  <!--label>EMERGENCY CONTACT</label>
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="contactName">FULL NAME</label>
@@ -164,7 +164,7 @@ $row2 = mysqli_fetch_assoc($query2);
     </div>
     <div class="form-group col-md-6">
       <label for="contactPhone">PHONE</label>
-      <input type="text" class="form-control" name="contactPhone" id="contactPhone" placeholder="Phone Number" value="<?php echo $row2 ['cPhone']; ?>">
+      <input type="text" class="form-control" name="contactPhone" id="contactPhone" placeholder="Phone Number" value="<?php echo $row2 ['phoneNo']; ?>">
     </div>
   </div>
   <div class="form-row">
@@ -175,22 +175,16 @@ $row2 = mysqli_fetch_assoc($query2);
     <div class="form-group col-md-6">
       <label for="contactType">CONTACT TYPE</label>
       <select class="form-control" id="contactType" name="contactType">
-		<option value="Support" <?php if(row2['cType']=="Support"){echo "selected";}?>>Support</option>
-        <option value="Emergency" <?php if(row2['cType']=="Emergency"){echo "selected";}?>>Emergency</option>
+		<option value="Support" <?php if($row2['cType']=="Support"){echo "selected";}?>>Support</option>
+        <option value="Emergency" <?php if($row2['cType']=="Emergency"){echo "selected";}?>>Emergency</option>
       </select>
-    </div>
+    </div-->
   <div class="form-row">
     <div class="form-group col-md-6 offset-md-3 form-buttons">
-		<!--<button type="submit" class="btn btn-primary disabled">Back</button>-->
-		<!--<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">-->
-		<!--<button type="submit" class="btn btn-primary">Next</button>-->
 		<input type = "hidden" name = "id" id="id" value = "<?php echo $id; ?>">
 		<input type ="submit" name="Submit" class ="btn btn-primary" value="Edit Volunteer Details">
     </div>
 	<div class="form-group col-md-6 offset-md-3 form-buttons">
-		<!--<button type="submit" class="btn btn-primary disabled">Back</button>-->
-		<!--<input type ="submit" name="cancel" class ="btn btn-primary" value="Back">-->
-		<!--<button type="submit" class="btn btn-primary">Next</button>-->
 		<input type = "hidden" name = "id" id="id" value = "<?php echo $id; ?>">
 		<input type ="submit" name="Archive" class ="btn btn-primary" value="Archive Volunteer">
     </div>

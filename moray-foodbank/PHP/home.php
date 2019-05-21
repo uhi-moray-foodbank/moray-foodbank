@@ -38,13 +38,6 @@ include("header.php");
         </div>
     </div>
 </div>
-
-<!-- TODO: temporary navigation - to be removed once these pages have a purpose -->
-<div class="container">
-    <p><strong>Temporary Navigation - remove later</strong></p>
-    <p><a href="starting-checklist.php">Starting checklist</a></p>
-</div>
-<!-- END OF TEMP SECTION -->
 </main>		
 </body>
 </html>

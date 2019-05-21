@@ -297,7 +297,35 @@ if(isset($_POST['submit'])){
 			echo "<td>" . $saltire . "</td>";
 			
 			if(isset($_POST['targets'])){
-				echo "<td>" . $target . "</td>";
+				if ($target == "disabilityLearning") 
+				{ echo "<td>People with a learning disbility</td>"; }
+				else if ($target == "mentalHealth") 
+				{ echo "<td>People with mental health conditions</td>"; }
+				else if ($target == "disabilityPhysical") 
+				{ echo "<td>People with a physical disbility</td>"; }
+				else if ($target == "chronicCondition") 
+				{ echo "<td>People with a long-standing illness, disease or chronic condition</td>"; }
+				else if ($target == "addiction") 
+				{ echo "<td>People affected by addictions</td>"; }
+				else if ($target == "abused") 
+				{ echo "<td>People affected by abuse</td>"; }
+				else if ($target == "lgbti") 
+				{ echo "<td>LGBTI</td>"; }
+				else if ($target == "offenders") 
+				{ echo "<td>Offenders / Ex-offenders</td>"; }
+				else if ($target == "youngRisk") 
+				{ echo "<td>Young people at risk of offending</td>"; }
+				else if ($target == "homeless") 
+				{ echo "<td>People affected by homelessness</td>"; }
+				else if ($target == "lowIncome") 
+				{ echo "<td>People on low incomes</td>"; }
+				else if ($target == "singleParent") 
+				{ echo "<td>Single parents</td>"; }
+				else if ($target == "ethnicMinority") 
+				{ echo "<td>People from BME communities</td>"; }
+				else if ($target == "carers") 
+				{ echo "<td>Carers</td>"; }
+				else { echo "<td>" . $target . "</td>";	}
 			}
 			
 			//Populates extra column if user wants to see archived entries.

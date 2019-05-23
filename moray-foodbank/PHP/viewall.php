@@ -3,12 +3,12 @@ $title = "Search Database";
 include("header.php");
 
 //The basic query for if no inputs are given to the search bar or checkboxes
-$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id=r.id AND archived IS NULL";
+$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, sat, sun, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id=r.id AND archived IS NULL";
 	
 
 //Appends functionality to the end of the query based on what the user inputs
 if(isset($_POST['submit'])){
-	$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id = r.id";
+	$sql = "SELECT v.id, CONCAT(fname,' ',lname) AS 'fullname', mon, tue, wed, thu, fri, sat, sun, saltire, groups, archived FROM volunteer v, days d, targetGroups t, roles r WHERE v.id = d.id AND v.id = t.id AND v.id = r.id";
 	
 	//Checks if anyone has a name similar or matching the one inputted
 	if(isset($_POST['surname'])){
@@ -54,6 +54,18 @@ if(isset($_POST['submit'])){
 	} else if (empty($_POST['friday'])){
 		$_SESSION['search_fri'] = 0;
 	}
+	if(isset($_POST['saturday'])){
+		$sql .= " AND sat='1' ";
+		$_SESSION['search_sat'] = 1;
+	} else if (empty($_POST['saturday'])){
+		$_SESSION['search_sat'] = 0;
+	}
+	if(isset($_POST['sunday'])){
+		$sql .= " AND sun='1' ";
+		$_SESSION['search_sun'] = 1;
+	} else if (empty($_POST['sunday'])){
+		$_SESSION['search_sun'] = 0;
+	}
 	
 	
 	if(isset($_POST['targets'])){
@@ -87,6 +99,8 @@ if(isset($_POST['submit'])){
 }else if(isset($_POST['clear'])){
 	//Remove all sessions and refresh page
 	unset($_SESSION['search_archive']);
+	unset($_SESSION['search_sun']);
+	unset($_SESSION['search_sat']);
 	unset($_SESSION['search_fri']);
 	unset($_SESSION['search_thu']);
 	unset($_SESSION['search_wed']);
@@ -125,7 +139,7 @@ if(isset($_POST['submit'])){
 			<input type="text" class="form-control" name="surname" id="surname" placeholder="" value="<?php if(isset($_SESSION['search_sur'])){echo $_SESSION['search_sur'];} ?>">
 		</div>
 
-		<div class="form-group col-md-1 offset-md-1">
+		<div class="form-group col-md-1">
 			<label>Days:</label>
 		</div>
 		<div class="form-check form-group col-md-1">
@@ -147,6 +161,14 @@ if(isset($_POST['submit'])){
 		<div class="form-check form-group col-md-1">
 			<input class="form-check-input" type="checkbox" value="1" name="friday" id="friday" <?php if(isset($_SESSION['search_fri']) && $_SESSION['search_fri']==1){echo "checked";} ?>>
 			<label class="form-check-label" for="friday">Fri</label>
+		</div>
+		<div class="form-check form-group col-md-1">
+			<input class="form-check-input" type="checkbox" value="1" name="saturday" id="saturday" <?php if(isset($_SESSION['search_sat']) && $_SESSION['search_sat']==1){echo "checked";} ?>>
+			<label class="form-check-label" for="saturday">Sat</label>
+		</div>
+		<div class="form-check form-group col-md-1">
+			<input class="form-check-input" type="checkbox" value="1" name="sunday" id="sunday" <?php if(isset($_SESSION['search_sun']) && $_SESSION['search_sun']==1){echo "checked";} ?>>
+			<label class="form-check-label" for="sunday">Sun</label>
 		</div>
 	</div>
 	
@@ -216,6 +238,8 @@ if(isset($_POST['submit'])){
 			$wed = $row['wed'];
 			$thu = $row['thu'];
 			$fri = $row['fri'];
+			$sat = $row['sat'];
+			$sun = $row['sun'];
 			$saltire = $row['saltire'];
 			
 			if($saltire==1){
@@ -274,6 +298,24 @@ if(isset($_POST['submit'])){
 			}
 			if($fri ==1){
 				$days .= "<div class='day-circle'>Fri</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
+			}
+			if($sat ==1){
+				$days .= "<div class='day-circle'>Sat</div>";
+			}else{
+				if($archived != ""){
+					$days .= "<div class='day-circle day-circle-archived'>|</div>";
+				}else{
+					$days .= "<div class='day-circle day-circle-empty'>|</div>";
+				}
+			}
+			if($sun ==1){
+				$days .= "<div class='day-circle'>Sun</div>";
 			}else{
 				if($archived != ""){
 					$days .= "<div class='day-circle day-circle-archived'>|</div>";

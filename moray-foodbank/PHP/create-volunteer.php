@@ -53,13 +53,15 @@ $sql .= "'" . $_SESSION['refRel2'] . "'); ";
 $result = mysqli_query($connection, $sql);
 
 //Days table
-$sql = "INSERT INTO days (id, mon, tue, wed, thu, fri) VALUES (";
+$sql = "INSERT INTO days (id, mon, tue, wed, thu, fri, sat, sun) VALUES (";
 $sql .= "'" . $id . "', ";
 $sql .= "'" . $_SESSION['mon'] . "', ";
 $sql .= "'" . $_SESSION['tue'] . "', ";
 $sql .= "'" . $_SESSION['wed'] . "', ";
 $sql .= "'" . $_SESSION['thu'] . "', ";
-$sql .= "'" . $_SESSION['fri'] . "'); ";
+$sql .= "'" . $_SESSION['fri'] . "', ";
+$sql .= "'" . $_SESSION['sat'] . "', ";
+$sql .= "'" . $_SESSION['sun'] . "'); ";
 
 $result = mysqli_query($connection, $sql);
 

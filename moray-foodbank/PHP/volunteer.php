@@ -133,6 +133,12 @@ if(isset($_GET['volunteer'])){
 		if($days_row['fri'] ==1){
 			$days .= "<div class='day-circle'>Fri</div>";
 		}
+		if($days_row['sat'] ==1){
+			$days .= "<div class='day-circle'>Sat</div>";
+		}
+		if($days_row['sun'] ==1){
+			$days .= "<div class='day-circle'>Sun</div>";
+		}
 				
 		echo "<h2> Days Available: </h2>";
 		if($days==""){

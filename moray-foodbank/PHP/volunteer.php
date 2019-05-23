@@ -25,6 +25,7 @@ if(isset($_GET['volunteer'])){
 	$days_query = mysqli_query($connection, $days_sql);
 	$days_row = mysqli_fetch_assoc($days_query);
 	
+	include("hours.php"); 
 	//Hours
 	$hours_sql = "SELECT sum(hoursWorked) as 'TotalHours' FROM hours WHERE id = '".$id."' GROUP BY id";
 	$hours_query = mysqli_query($connection, $hours_sql);
@@ -48,6 +49,7 @@ if(isset($_GET['volunteer'])){
 }else{
 	Header("Location: viewall.php");
 }
+
 ?>
 
 <main class="container.fluid">
@@ -143,7 +145,30 @@ if(isset($_GET['volunteer'])){
 		
 		//Hours
 		echo "<h2>Total Hours Worked: ".$hours_row['TotalHours'] ."</h2>";
-		
+?>
+	<form name='addhours' action='' method='post'>
+		<input type="hidden" id="vol" name="vol" value="<?php echo $id; ?>">
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>Hours</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>
+					<input name='date' type='date' min="2000-01-01" max="3000-12-31" value="<?php echo "20".date("y-m-d")?>";>
+				</td>
+				<td>
+					<input id="hours" name='hours' type='number' min="0" max="12" value="0";>
+				</td>
+				<td>
+					<input type="submit">
+					<?php if(isset($result)){ echo $result; } ?>
+				</td>
+			</tr>
+		</table>
+	</form>
+<?php
 		echo "<br>";
 		
 		//Roles
@@ -285,7 +310,7 @@ if(isset($_GET['volunteer'])){
   </div>
   </form>
 	<!--TODO: move to the right position, currently just loads at foot of the page.-->
-	<?php include 'hours.php'; ?>
+
 
 </div>
 </main>

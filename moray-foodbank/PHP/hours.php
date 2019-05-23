@@ -15,7 +15,7 @@ if (!empty($_POST['hours']))
 		$num_results1 = mysqli_num_rows($result1);
 		if ($num_results1 != 0)
 		{
-			echo "<table><th>Sorry, hours have already been added for that volunteer on that day.</th></table>";
+			$result ="Sorry, hours have already been added for that volunteer on that day.";
 		} else
 		{
 			// (1, 	'2019-03-08', 6);
@@ -24,39 +24,12 @@ if (!empty($_POST['hours']))
 				VALUES ('".$vol."', '".$date."', '".$hours."');";
 			if ($connection->query($query2) === FALSE) # $link may not be the correct variable
 			{
-				echo "<table><th>Failed to add hours.</th></table>";
+				$result ="Failed to add hours.";
 			} 
 			else
 			{
-				echo "<table><th>Hours Added.</th></table>";
+				$result ="Hours added.";
 			}
 		}
-} else
-{
-	?>
-	<form name='addhours' action='' method='post'>
-		<input type="hidden" id="vol" name="vol" value="<?php echo $id; ?>">
-		<table>
-			<tr>
-				<th>Date</th>
-				<th>Hours</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td>
-					<input name='date' type='date' min="2000-01-01" max="3000-12-31" value="<?php echo "20".date("y-m-d")?>";>
-				</td>
-				<td>
-					<input id="hours" name='hours' type='number' min="0" max="12" value="0";>
-
-					
-				</td>
-				<td>
-					<input type="submit">
-				</td>
-			</tr>
-		</table>
-	</form>
-	<?php
 }
 ?>

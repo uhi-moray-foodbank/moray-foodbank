@@ -4,7 +4,7 @@ include("header.php");
 
 if(isset($_POST['submit']) || isset($_POST['back'])){
 	
-	if($_POST['targetGroup'] = "none"){
+	if($_POST['targetGroup'] == "none"){
 		$_SESSION['targetGroup'] = null;
 	}else{
 		$_SESSION['targetGroup'] = $_POST['targetGroup'];
